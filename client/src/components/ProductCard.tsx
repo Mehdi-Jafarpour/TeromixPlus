@@ -3,6 +3,7 @@ import { Product } from "@shared/schema";
 import { useCart } from "@/contexts/CartContext";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { useTranslation } from "react-i18next";
 
 interface ProductCardProps {
   product: Product;

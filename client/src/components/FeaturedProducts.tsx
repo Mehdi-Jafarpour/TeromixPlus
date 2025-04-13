@@ -3,9 +3,11 @@ import { Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { Product } from "@shared/schema";
 import ProductCard from "./ProductCard";
+import { useTranslation } from "react-i18next";
 
 const FeaturedProducts = () => {
   const [activeFilter, setActiveFilter] = useState("all");
+  const { t } = useTranslation();
   
   const { data: products, isLoading, error } = useQuery<Product[]>({
     queryKey: ['/api/products/featured'],
@@ -21,8 +23,8 @@ const FeaturedProducts = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-baseline mb-12">
             <div>
-              <h2 className="text-3xl font-playfair font-bold text-[#4A3C2A] mb-3">Featured Products</h2>
-              <p className="text-[#8C7354] max-w-xl">Loading our featured products...</p>
+              <h2 className="text-3xl font-playfair font-bold text-[#4A3C2A] mb-3">{t('home.featured_products.title')}</h2>
+              <p className="text-[#8C7354] max-w-xl">{t('common.loading')}</p>
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -46,8 +48,8 @@ const FeaturedProducts = () => {
     return (
       <section id="products" className="py-16 bg-[#F9F5E7]">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-playfair font-bold text-[#4A3C2A] mb-3">Featured Products</h2>
-          <p className="text-red-500">Failed to load products. Please try again later.</p>
+          <h2 className="text-3xl font-playfair font-bold text-[#4A3C2A] mb-3">{t('home.featured_products.title')}</h2>
+          <p className="text-red-500">{t('common.error')}</p>
         </div>
       </section>
     );
@@ -70,12 +72,12 @@ const FeaturedProducts = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-baseline mb-12">
           <div>
-            <h2 className="text-3xl font-playfair font-bold text-[#4A3C2A] mb-3">Featured Products</h2>
+            <h2 className="text-3xl font-playfair font-bold text-[#4A3C2A] mb-3">{t('home.featured_products.title')}</h2>
             <p className="text-[#8C7354] max-w-xl">Our most popular and newest handcrafted wooden millwork pieces</p>
           </div>
           <div className="mt-4 md:mt-0">
             <Link href="/products" className="inline-flex items-center text-[#8C7354] hover:text-[#4A3C2A] font-medium">
-              View All Products <i className="fas fa-long-arrow-alt-right ml-2"></i>
+              {t('home.featured_products.view_all')} <i className="fas fa-long-arrow-alt-right ml-2"></i>
             </Link>
           </div>
         </div>
@@ -86,7 +88,7 @@ const FeaturedProducts = () => {
             className={`px-4 py-2 rounded-full ${activeFilter === 'all' ? 'bg-[#8C7354] text-white' : 'bg-white hover:bg-[#A38F71]/10 text-[#4A3C2A]'} text-sm font-medium transition`}
             onClick={() => filterProducts('all')}
           >
-            All Products
+            {t('products.all')}
           </button>
           <button 
             className={`px-4 py-2 rounded-full ${activeFilter === 'doors' ? 'bg-[#8C7354] text-white' : 'bg-white hover:bg-[#A38F71]/10 text-[#4A3C2A]'} text-sm font-medium transition`}
@@ -127,7 +129,7 @@ const FeaturedProducts = () => {
 
           {filteredProducts && filteredProducts.length === 0 && (
             <div className="col-span-full text-center py-10">
-              <p className="text-[#4A3C2A]">No products found in this category. Please try another filter.</p>
+              <p className="text-[#4A3C2A]">{t('products.no_results')}</p>
             </div>
           )}
         </div>
