@@ -12,6 +12,7 @@ import Checkout from "@/pages/Checkout";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
 import CustomOrders from "@/pages/CustomOrders";
+import Services from "@/pages/Services";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -26,6 +27,7 @@ function Router() {
       <Route path="/about" component={About} />
       <Route path="/contact" component={Contact} />
       <Route path="/custom-orders" component={CustomOrders} />
+      <Route path="/services" component={Services} />
       <Route component={NotFound} />
     </Switch>
   );

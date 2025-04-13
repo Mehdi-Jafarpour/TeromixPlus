@@ -65,8 +65,8 @@ const Header = () => {
               <Link href="/products" className="text-[#4A3C2A] font-medium hover:text-[#8C7354] md:mx-4">
                 {t('navigation.products')}
               </Link>
-              <Link href="/products?category=furniture" className="text-[#4A3C2A] font-medium hover:text-[#8C7354] md:mx-4">
-                Collections
+              <Link href="/services" className="text-[#4A3C2A] font-medium hover:text-[#8C7354] md:mx-4">
+                {t('navigation.services')}
               </Link>
               <Link href="/custom-orders" className="text-[#4A3C2A] font-medium hover:text-[#8C7354] md:mx-4">
                 {t('navigation.custom_orders')}
@@ -82,7 +82,7 @@ const Header = () => {
               <form onSubmit={handleSearch} className="relative">
                 <input 
                   type="text" 
-                  placeholder="Search products..." 
+                  placeholder={t('navigation.search_placeholder')} 
                   className="px-4 py-2 rounded-full bg-[#F9F5E7] border border-[#A38F71] focus:outline-none focus:border-[#8C7354] text-sm w-full md:w-48"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}

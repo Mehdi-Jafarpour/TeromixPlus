@@ -2,10 +2,12 @@
   "navigation": {
     "home": "Home",
     "products": "Products",
+    "services": "Services",
     "about": "About",
     "contact": "Contact",
     "custom_orders": "Custom Orders",
-    "cart": "Cart"
+    "cart": "Cart",
+    "search_placeholder": "Search products..."
   },
   "home": {
     "hero": {
