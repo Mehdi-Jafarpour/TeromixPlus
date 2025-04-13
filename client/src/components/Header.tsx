@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { CartSidebar } from "./CartSidebar";
 import { useCart } from "@/contexts/CartContext";
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -9,6 +11,7 @@ const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [, navigate] = useLocation();
   const { cart } = useCart();
+  const { t } = useTranslation();
   
   const cartItemCount = cart.reduce((total, item) => total + item.quantity, 0);
 
@@ -56,12 +59,24 @@ const Header = () => {
 
           <div id="mobile-menu" className={`${mobileMenuOpen ? 'flex' : 'hidden'} md:flex flex-col md:flex-row mt-4 md:mt-0`}>
             <nav className="flex flex-col md:flex-row md:items-center md:ml-6 space-y-3 md:space-y-0">
-              <Link href="/" className="text-[#4A3C2A] font-medium hover:text-[#8C7354] md:mx-4">Home</Link>
-              <Link href="/products" className="text-[#4A3C2A] font-medium hover:text-[#8C7354] md:mx-4">Products</Link>
-              <Link href="/products?category=furniture" className="text-[#4A3C2A] font-medium hover:text-[#8C7354] md:mx-4">Collections</Link>
-              <Link href="/custom-orders" className="text-[#4A3C2A] font-medium hover:text-[#8C7354] md:mx-4">Custom Work</Link>
-              <Link href="/about" className="text-[#4A3C2A] font-medium hover:text-[#8C7354] md:mx-4">About Us</Link>
-              <Link href="/contact" className="text-[#4A3C2A] font-medium hover:text-[#8C7354] md:mx-4">Contact</Link>
+              <Link href="/" className="text-[#4A3C2A] font-medium hover:text-[#8C7354] md:mx-4">
+                {t('navigation.home')}
+              </Link>
+              <Link href="/products" className="text-[#4A3C2A] font-medium hover:text-[#8C7354] md:mx-4">
+                {t('navigation.products')}
+              </Link>
+              <Link href="/products?category=furniture" className="text-[#4A3C2A] font-medium hover:text-[#8C7354] md:mx-4">
+                Collections
+              </Link>
+              <Link href="/custom-orders" className="text-[#4A3C2A] font-medium hover:text-[#8C7354] md:mx-4">
+                {t('navigation.custom_orders')}
+              </Link>
+              <Link href="/about" className="text-[#4A3C2A] font-medium hover:text-[#8C7354] md:mx-4">
+                {t('navigation.about')}
+              </Link>
+              <Link href="/contact" className="text-[#4A3C2A] font-medium hover:text-[#8C7354] md:mx-4">
+                {t('navigation.contact')}
+              </Link>
             </nav>
             <div className="flex md:ml-6 mt-4 md:mt-0 space-x-4 items-center">
               <form onSubmit={handleSearch} className="relative">
@@ -79,6 +94,7 @@ const Header = () => {
               <Link href="/account" className="text-[#4A3C2A] hover:text-[#8C7354]">
                 <i className="fas fa-user text-xl"></i>
               </Link>
+              <LanguageSwitcher />
               <button 
                 className="text-[#4A3C2A] hover:text-[#8C7354] relative"
                 onClick={() => setCartOpen(true)}
