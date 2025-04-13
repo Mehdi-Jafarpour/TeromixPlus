@@ -13,6 +13,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
   const { addToCart } = useCart();
   const [isHovered, setIsHovered] = useState(false);
   const { toast } = useToast();
+  const { t } = useTranslation();
   
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -21,8 +22,8 @@ const ProductCard = ({ product }: ProductCardProps) => {
     addToCart(product, 1);
     
     toast({
-      title: "Added to cart",
-      description: `${product.name} has been added to your cart.`,
+      title: t('cart.add_to_cart'),
+      description: `${product.name} ${t('cart.added_to_cart')}`,
       duration: 3000,
     });
   };
@@ -59,7 +60,9 @@ const ProductCard = ({ product }: ProductCardProps) => {
           </div>
           {product.salePrice && (
             <div className="absolute top-3 left-3">
-              <span className="bg-[#8C7354] text-white text-xs px-2 py-1 rounded">Sale</span>
+              <span className="bg-[#8C7354] text-white text-xs px-2 py-1 rounded">
+                {t('products.sale')}
+              </span>
             </div>
           )}
           {isHovered && (
@@ -69,7 +72,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
                   onClick={handleAddToCart}
                   className="bg-[#8C7354] hover:bg-[#4A3C2A] text-white text-sm py-1 px-3 rounded-md flex-grow transition"
                 >
-                  Add to Cart
+                  {t('products.add_to_cart')}
                 </button>
                 <Link href={`/products/${product.slug}`}>
                   <button className="bg-white text-[#4A3C2A] hover:bg-[#F9F5E7] w-8 h-8 rounded-md flex items-center justify-center transition">
@@ -89,7 +92,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
               {[...Array(5)].map((_, i) => (
                 <i 
                   key={i} 
-                  className={`fas ${i < Math.floor(product.rating) ? 'fa-star' : i < product.rating ? 'fa-star-half-alt' : 'fa-star'}`}
+                  className={`fas ${i < Math.floor(product.rating || 0) ? 'fa-star' : i < (product.rating || 0) ? 'fa-star-half-alt' : 'fa-star'}`}
                 ></i>
               ))}
               <span className="text-[#8C7354] ml-1 text-xs">({product.reviewCount})</span>
@@ -104,7 +107,9 @@ const ProductCard = ({ product }: ProductCardProps) => {
                 <span className="text-gray-500 line-through text-sm ml-2">${product.salePrice.toFixed(2)}</span>
               )}
             </div>
-            <span className="text-xs text-[#8C7354]">{product.inStock ? 'In stock' : 'Out of stock'}</span>
+            <span className="text-xs text-[#8C7354]">
+              {product.inStock ? t('products.in_stock') : t('products.out_of_stock')}
+            </span>
           </div>
         </div>
       </Link>
