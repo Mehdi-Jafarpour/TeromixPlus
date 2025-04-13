@@ -1,0 +1,157 @@
+{
+  "navigation": {
+    "home": "Home",
+    "products": "Products",
+    "about": "About",
+    "contact": "Contact",
+    "custom_orders": "Custom Orders",
+    "cart": "Cart"
+  },
+  "home": {
+    "hero": {
+      "title": "Handcrafted Wooden Millworks",
+      "subtitle": "Beautiful, durable, and timeless wooden products for your home",
+      "cta": "Shop Now"
+    },
+    "featured_products": {
+      "title": "Featured Products",
+      "view_all": "View All Products"
+    },
+    "craftsmanship": {
+      "title": "Exceptional Craftsmanship",
+      "description": "Each piece is meticulously handcrafted by skilled artisans with years of experience in wood working."
+    },
+    "testimonials": {
+      "title": "What Our Customers Say",
+      "view_all": "View All Testimonials"
+    },
+    "custom_work": {
+      "title": "Custom Work",
+      "description": "Need something specific? We can create custom pieces tailored to your needs.",
+      "cta": "Request Custom Order"
+    },
+    "newsletter": {
+      "title": "Join Our Newsletter",
+      "description": "Stay updated with our latest products and offers",
+      "placeholder": "Enter your email",
+      "button": "Subscribe"
+    }
+  },
+  "products": {
+    "title": "All Products",
+    "filter": "Filter",
+    "sort": "Sort",
+    "price_range": "Price Range",
+    "categories": "Categories",
+    "all": "All",
+    "sort_options": {
+      "price_low_high": "Price: Low to High",
+      "price_high_low": "Price: High to Low",
+      "newest": "Newest",
+      "popular": "Popular"
+    },
+    "no_results": "No products found",
+    "add_to_cart": "Add to Cart"
+  },
+  "product_detail": {
+    "add_to_cart": "Add to Cart",
+    "quantity": "Quantity",
+    "dimensions": "Dimensions",
+    "material": "Material",
+    "shipping": "Shipping",
+    "related_products": "Related Products",
+    "reviews": "Reviews",
+    "back_to_products": "Back to Products"
+  },
+  "cart": {
+    "title": "Your Cart",
+    "empty": "Your cart is empty",
+    "continue_shopping": "Continue Shopping",
+    "product": "Product",
+    "price": "Price",
+    "quantity": "Quantity",
+    "total": "Total",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "tax": "Tax",
+    "order_total": "Order Total",
+    "checkout": "Checkout",
+    "update": "Update",
+    "remove": "Remove"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "contact_info": "Contact Information",
+    "shipping_address": "Shipping Address",
+    "payment_method": "Payment Method",
+    "summary": "Order Summary",
+    "place_order": "Place Order",
+    "back_to_cart": "Back to Cart",
+    "first_name": "First Name",
+    "last_name": "Last Name",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+    "city": "City",
+    "state": "State/Province",
+    "zip": "Zip/Postal Code",
+    "country": "Country",
+    "card_number": "Card Number",
+    "card_name": "Name on Card",
+    "expiry": "Expiry Date",
+    "cvv": "CVV"
+  },
+  "about": {
+    "title": "About Us",
+    "our_story": "Our Story",
+    "mission": "Our Mission",
+    "team": "Our Team",
+    "values": "Our Values"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "get_in_touch": "Get in Touch",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send Message",
+    "address": "Address",
+    "phone": "Phone",
+    "email_contact": "Email"
+  },
+  "custom_orders": {
+    "title": "Custom Orders",
+    "description": "Need something special? Let us create a custom piece for you.",
+    "form_title": "Request a Custom Order",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "project_description": "Project Description",
+    "dimensions": "Dimensions (if applicable)",
+    "budget": "Budget Range",
+    "timeline": "Desired Timeline",
+    "submit": "Submit Request"
+  },
+  "footer": {
+    "company": "Company",
+    "about": "About",
+    "contact": "Contact",
+    "custom_orders": "Custom Orders",
+    "help": "Help",
+    "shipping": "Shipping",
+    "returns": "Returns",
+    "faq": "FAQ",
+    "connect": "Connect",
+    "rights": "All Rights Reserved",
+    "privacy_policy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "try_again": "Try Again",
+    "required_field": "This field is required",
+    "invalid_email": "Invalid email address",
+    "language": "Language"
+  }
+}
