@@ -45,8 +45,8 @@ const Header = () => {
         <div className="container mx-auto px-4 py-3 flex flex-col md:flex-row md:items-center justify-between">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center">
-              <span className="text-[#4A3C2A] font-playfair text-2xl md:text-3xl font-bold">WoodCraft</span>
-              <span className="text-[#8C7354] font-playfair italic text-xl md:text-2xl ml-1">Millworks</span>
+              <span className="text-[#4A3C2A] font-playfair text-2xl md:text-3xl font-bold">Teromix</span>
+              <span className="text-[#8C7354] font-playfair text-2xl md:text-2xl ml-1">+</span>
             </Link>
             <button 
               id="mobile-menu-button" 

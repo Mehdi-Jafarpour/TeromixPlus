@@ -93,8 +93,8 @@ const CustomOrders = () => {
                       Our design team meets with you to understand your vision, requirements, and the space where the custom piece will live. We discuss materials, styles, and functionality.
                     </p>
                   </div>
-                  <div className="hidden md:block absolute left-1/2 w-12 h-12 rounded-full bg-[#F9F5E7] border-4 border-[#8C7354] transform -translate-x-1/2 flex items-center justify-center">
-                    <span className="text-[#4A3C2A] font-bold">1</span>
+                  <div className="hidden md:block absolute left-1/2 w-10 h-10 rounded-full bg-[#F9F5E7] border-4 border-[#8C7354] transform -translate-x-1/2 flex items-center justify-center">
+                    <span className="text-[#4A3C2A] font-extrabold flex items-center justify-center">1</span>
                   </div>
                   <div className="md:w-1/2 md:pl-12">
                     <img 
@@ -116,8 +116,8 @@ const CustomOrders = () => {
                       className="rounded-lg shadow-md w-full"
                     />
                   </div>
-                  <div className="hidden md:block absolute left-1/2 w-12 h-12 rounded-full bg-[#F9F5E7] border-4 border-[#8C7354] transform -translate-x-1/2 flex items-center justify-center">
-                    <span className="text-[#4A3C2A] font-bold">2</span>
+                  <div className="hidden md:block absolute left-1/2 w-10 h-10 rounded-full bg-[#F9F5E7] border-4 border-[#8C7354] transform -translate-x-1/2 flex items-center justify-center">
+                    <span className="text-[#4A3C2A] font-extrabold flex items-center justify-center">2</span>
                   </div>
                   <div className="md:w-1/2 md:pl-12">
                     <h3 className="text-2xl font-playfair font-bold text-[#4A3C2A] mb-3">2. Design & Planning</h3>
@@ -137,8 +137,8 @@ const CustomOrders = () => {
                       Our master woodworkers begin the meticulous process of creating your custom piece. We use traditional joinery techniques combined with modern precision to ensure longevity.
                     </p>
                   </div>
-                  <div className="hidden md:block absolute left-1/2 w-12 h-12 rounded-full bg-[#F9F5E7] border-4 border-[#8C7354] transform -translate-x-1/2 flex items-center justify-center">
-                    <span className="text-[#4A3C2A] font-bold">3</span>
+                  <div className="hidden md:block absolute left-1/2 w-10 h-10 rounded-full bg-[#F9F5E7] border-4 border-[#8C7354] transform -translate-x-1/2 flex items-center justify-center">
+                    <span className="text-[#4A3C2A] font-extrabold flex items-center justify-center">3</span>
                   </div>
                   <div className="md:w-1/2 md:pl-12">
                     <img 
@@ -155,13 +155,13 @@ const CustomOrders = () => {
                 <div className="md:flex items-center">
                   <div className="md:w-1/2 mb-8 md:mb-0 md:pr-12">
                     <img 
-                      src="https://images.unsplash.com/photo-1631049552057-37483238645a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=300&q=80" 
+                      src="https://demo-source.imgix.net/house.jpg" 
                       alt="Finished wooden cabinet in home" 
                       className="rounded-lg shadow-md w-full"
                     />
                   </div>
-                  <div className="hidden md:block absolute left-1/2 w-12 h-12 rounded-full bg-[#F9F5E7] border-4 border-[#8C7354] transform -translate-x-1/2 flex items-center justify-center">
-                    <span className="text-[#4A3C2A] font-bold">4</span>
+                  <div className="hidden md:block absolute left-1/2 w-10 h-10 rounded-full bg-[#F9F5E7] border-4 border-[#8C7354] transform -translate-x-1/2 flex items-center justify-center">
+                    <span className="text-[#4A3C2A] font-extrabold flex items-center justify-center">4</span>
                   </div>
                   <div className="md:w-1/2 md:pl-12">
                     <h3 className="text-2xl font-playfair font-bold text-[#4A3C2A] mb-3">4. Delivery & Installation</h3>
