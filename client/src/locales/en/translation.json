@@ -134,6 +134,46 @@
     "timeline": "Desired Timeline",
     "submit": "Submit Request"
   },
+  "services": {
+    "hero": {
+      "title": "Our Carpentry Services",
+      "subtitle": "Professional carpentry services with quality materials and craftsmanship"
+    },
+    "painting": {
+      "title": "Wood Painting",
+      "description": "Professional wood painting and finishing with premium stains and varnishes.",
+      "details": "Our wood painting service includes surface preparation, staining, and multiple coats of high-quality finishes to protect and enhance the natural beauty of the wood.",
+      "quote_title": "Premium Finishes",
+      "quote": "We use only top-quality paints and finishes that protect your wood products while bringing out their natural beauty."
+    },
+    "assembling": {
+      "title": "Furniture Assembly",
+      "description": "Expert assembly and installation of wooden furniture and fixtures.",
+      "details": "Our assembly team ensures that every joint is properly aligned and secured, resulting in sturdy, long-lasting wooden furniture that stands the test of time.",
+      "quote_title": "Professional Installation",
+      "quote": "Our experienced team handles complex assembly with precision, ensuring your pieces function perfectly for years to come."
+    },
+    "cutting": {
+      "title": "Custom Cutting",
+      "description": "Precise cutting and shaping of wood materials to your exact specifications.",
+      "details": "Using state-of-the-art equipment, we provide clean, accurate cuts for any wood project, from simple trims to complex custom profiles and shapes.",
+      "quote_title": "Precision Cutting",
+      "quote": "Every millimeter matters in fine woodworking. We guarantee precise cuts that perfectly match your specifications."
+    },
+    "custom": {
+      "title": "Custom Design",
+      "description": "From concept to creation, we bring your unique wood project ideas to life.",
+      "details": "Our design team works closely with you to understand your vision, providing sketches and prototypes before creating your one-of-a-kind wooden masterpiece.",
+      "quote_title": "Unique Creations",
+      "quote": "No two projects are alike. We pride ourselves on creating custom pieces that reflect your personality and needs."
+    },
+    "cta": {
+      "title": "Ready to Transform Your Space?",
+      "description": "Contact our expert team today to discuss your project needs and get a personalized quote.",
+      "button": "Contact Us Today"
+    },
+    "request_quote": "Request a Quote"
+  },
   "footer": {
     "company": "Company",
     "about": "About",
