@@ -15,6 +15,7 @@ import CustomOrders from "@/pages/CustomOrders";
 import Services from "@/pages/Services";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import TestPage from '@/pages/Test';
 
 function Router() {
   return (
@@ -28,6 +29,7 @@ function Router() {
       <Route path="/contact" component={Contact} />
       <Route path="/custom-orders" component={CustomOrders} />
       <Route path="/services" component={Services} />
+      <Route path="/test" component={TestPage} />
       <Route component={NotFound} />
     </Switch>
   );

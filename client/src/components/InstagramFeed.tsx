@@ -40,7 +40,7 @@ const InstagramFeed = () => {
             Get inspired by our latest projects and behind-the-scenes craftsmanship
           </p>
           <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center mt-4 text-[#8C7354] hover:text-[#4A3C2A] font-medium">
-            <i className="fab fa-instagram mr-2 text-xl"></i> @woodcraft_millworks
+            <i className="fab fa-instagram mr-2 text-xl"></i> @teromixplus
           </a>
         </div>
         

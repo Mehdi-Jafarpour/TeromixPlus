@@ -4,13 +4,15 @@ import { useQuery } from "@tanstack/react-query";
 import { Product } from "@shared/schema";
 import ProductCard from "./ProductCard";
 import { useTranslation } from "react-i18next";
+import { getFeaturedProducts } from "@/services/api";
 
 const FeaturedProducts = () => {
   const [activeFilter, setActiveFilter] = useState("all");
   const { t } = useTranslation();
   
   const { data: products, isLoading, error } = useQuery<Product[]>({
-    queryKey: ['/api/products/featured'],
+    queryKey: ['featured-products'],
+    queryFn: getFeaturedProducts
   });
   
   const filterProducts = (category: string) => {
@@ -58,13 +60,9 @@ const FeaturedProducts = () => {
   // Filter products based on selected category
   let filteredProducts = products;
   if (activeFilter !== "all" && products) {
-    const categoryId = activeFilter === "doors" ? 1 : 
-                       activeFilter === "cabinetry" ? 2 :
-                       activeFilter === "furniture" ? 3 :
-                       activeFilter === "moldings" ? 4 :
-                       activeFilter === "decor" ? 5 : 0;
-                       
-    filteredProducts = products.filter(product => product.categoryId === categoryId);
+    filteredProducts = products.filter(product => 
+      product.category?.slug === activeFilter
+    );
   }
 
   return (

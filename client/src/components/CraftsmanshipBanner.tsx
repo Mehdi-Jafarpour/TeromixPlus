@@ -22,7 +22,7 @@ const CraftsmanshipBanner = () => {
               Dedication to Quality In Every Piece We Create
             </h2>
             <p className="text-[#8C7354] mb-6 leading-relaxed">
-              At WoodCraft Millworks, we believe that exceptional wooden elements are the foundation of a beautiful home. Each piece begins with selecting the finest sustainably-sourced hardwoods, which are then carefully transformed by our master craftspeople using both traditional techniques and modern precision.
+              At Teromix+, we believe that exceptional wooden elements are the foundation of a beautiful home. Each piece begins with selecting the finest sustainably-sourced hardwoods, which are then carefully transformed by our master craftspeople using both traditional techniques and modern precision.
             </p>
             <ul className="space-y-3 mb-8">
               <li className="flex items-start">

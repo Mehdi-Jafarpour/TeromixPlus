@@ -3,13 +3,15 @@ import { Product } from "@shared/schema";
 
 interface CartItem {
   id: number;
-  product: Product;
+  product: Product & {
+    selectedDimensionIndex?: number;
+  };
   quantity: number;
 }
 
 interface CartContextType {
   cart: CartItem[];
-  addToCart: (product: Product, quantity: number) => void;
+  addToCart: (product: Product & { selectedDimensionIndex?: number }, quantity: number) => void;
   updateCartItemQuantity: (id: number, quantity: number) => void;
   removeFromCart: (id: number) => void;
   clearCart: () => void;
@@ -35,20 +37,20 @@ const CartProvider = ({ children }: CartProviderProps) => {
   
   // Load cart from localStorage on initial render
   useEffect(() => {
-    const savedCart = localStorage.getItem("woodcraft-cart");
+    const savedCart = localStorage.getItem("teromix-cart");
     if (savedCart) {
       try {
         setCart(JSON.parse(savedCart));
       } catch (error) {
         console.error("Failed to parse cart from localStorage:", error);
-        localStorage.removeItem("woodcraft-cart");
+        localStorage.removeItem("teromix-cart");
       }
     }
   }, []);
   
   // Save cart to localStorage whenever it changes
   useEffect(() => {
-    localStorage.setItem("woodcraft-cart", JSON.stringify(cart));
+    localStorage.setItem("teromix-cart", JSON.stringify(cart));
   }, [cart]);
   
   // Calculate cart total
@@ -57,17 +59,20 @@ const CartProvider = ({ children }: CartProviderProps) => {
     return total + (itemPrice * item.quantity);
   }, 0);
   
-  const addToCart = (product: Product, quantity: number) => {
-    // Check if the product is already in the cart
-    const existingItemIndex = cart.findIndex(item => item.product.id === product.id);
+  const addToCart = (product: Product & { selectedDimensionIndex?: number }, quantity: number) => {
+    // Check if the product with the same dimension is already in the cart
+    const existingItemIndex = cart.findIndex(item => 
+      item.product.id === product.id && 
+      item.product.selectedDimensionIndex === product.selectedDimensionIndex
+    );
     
     if (existingItemIndex !== -1) {
-      // If item exists, update its quantity
+      // If item exists with same dimension, update its quantity
       const updatedCart = [...cart];
       updatedCart[existingItemIndex].quantity += quantity;
       setCart(updatedCart);
     } else {
-      // If item doesn't exist, add it to the cart
+      // If item doesn't exist or has different dimension, add it as new item
       const newItem: CartItem = {
         id: Date.now(), // Use timestamp as a unique ID
         product,
@@ -99,17 +104,15 @@ const CartProvider = ({ children }: CartProviderProps) => {
     setCart([]);
   };
   
-  const value = {
-    cart,
-    addToCart,
-    updateCartItemQuantity,
-    removeFromCart,
-    clearCart,
-    cartTotal
-  };
-  
   return (
-    <CartContext.Provider value={value}>
+    <CartContext.Provider value={{
+      cart,
+      addToCart,
+      updateCartItemQuantity,
+      removeFromCart,
+      clearCart,
+      cartTotal
+    }}>
       {children}
     </CartContext.Provider>
   );

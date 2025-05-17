@@ -5,36 +5,70 @@ import { useState } from "react";
 import { Product } from "@shared/schema";
 import { useToast } from "@/hooks/use-toast";
 import ProductCard from "@/components/ProductCard";
+import { getProduct, getProducts } from "@/services/api";
+
+interface Dimension {
+  price: number;
+  dimension: string;
+  woodType: string;
+  weight: number;
+  inStock: boolean;
+}
 
 const ProductDetail = () => {
   const { slug } = useParams();
   const [quantity, setQuantity] = useState(1);
+  const [selectedDimensionIndex, setSelectedDimensionIndex] = useState<number>(0);
   const { addToCart } = useCart();
   const { toast } = useToast();
 
-  const { data: product, isLoading, error } = useQuery<Product>({
-    queryKey: [`/api/products/${slug}`],
+  const { data: product, isLoading, error } = useQuery<Product | null>({
+    queryKey: ['product', slug],
+    queryFn: () => getProduct(slug || ''),
+    enabled: !!slug
   });
 
+  // Add debugging logs
+  console.log('Product data:', product);
+  console.log('Dimensions:', product?.dimensions);
+
   const { data: relatedProducts } = useQuery<Product[]>({
-    queryKey: ['/api/products'],
-    enabled: !!product,
+    queryKey: ['products'],
+    queryFn: getProducts,
+    enabled: !!product
   });
 
   // Filter related products by same category, excluding current product
   const filteredRelatedProducts = relatedProducts?.filter(
-    p => p.categoryId === product?.categoryId && p.id !== product?.id
+    p => p.category?.id === product?.category?.id && p.id !== product?.id
   ).slice(0, 4);
 
   const handleAddToCart = () => {
-    if (product) {
-      addToCart(product, quantity);
+    if (product && product.dimensions) {
+      const selectedDimension = product.dimensions[selectedDimensionIndex];
+      const productWithSelectedDimension = {
+        ...product,
+        price: selectedDimension.price,
+        dimensions: selectedDimension.dimension,
+        woodType: selectedDimension.woodType,
+        weight: selectedDimension.weight,
+        inStock: selectedDimension.inStock,
+        selectedDimensionIndex // Store the selected dimension index
+      };
+      
+      addToCart(productWithSelectedDimension, quantity);
       toast({
         title: "Added to cart",
-        description: `${quantity} ${quantity > 1 ? 'items' : 'item'} of ${product.name} added to your cart.`,
+        description: `${quantity} ${quantity > 1 ? 'items' : 'item'} of ${product.name} (${selectedDimension.dimension}) added to your cart.`,
       });
     }
   };
+
+  // Get the currently selected dimension with proper null checks
+  const dimensions = Array.isArray(product?.dimensions) ? product.dimensions : [];
+  const selectedDimension = dimensions[selectedDimensionIndex];
+  const isInStock = selectedDimension?.inStock ?? false;
+  const currentPrice = selectedDimension?.price ?? product?.price ?? 0;
 
   if (isLoading) {
     return (
@@ -113,19 +147,14 @@ const ProductDetail = () => {
 
             <div className="flex items-baseline mb-6">
               <span className="text-2xl font-bold text-[#4A3C2A] mr-3">
-                ${product.price.toFixed(2)}
+                ${currentPrice.toFixed(2)}
               </span>
-              {product.salePrice && (
-                <span className="text-lg text-gray-500 line-through">
-                  ${product.salePrice.toFixed(2)}
-                </span>
-              )}
-              {product.inStock ? (
+              {isInStock ? (
                 <span className="ml-auto text-green-600 flex items-center">
                   <i className="fas fa-check-circle mr-1"></i> In Stock
                 </span>
               ) : (
-                <span className="ml-auto text-red-500 flex items-center">
+                <span className="ml-auto text-red-600 flex items-center">
                   <i className="fas fa-times-circle mr-1"></i> Out of Stock
                 </span>
               )}
@@ -136,20 +165,53 @@ const ProductDetail = () => {
                 {product.description}
               </p>
               
-              <div className="grid grid-cols-2 gap-4 mt-6">
-                <div className="text-[#8C7354]">
-                  <span className="font-medium text-[#4A3C2A]">Wood Type:</span> {product.woodType}
+              {dimensions.length > 0 ? (
+                <div className="mt-6">
+                  <h3 className="font-medium text-[#4A3C2A] mb-3">Available Options</h3>
+                  <div className="space-y-3">
+                    {dimensions.map((dim, index) => (
+                      <label 
+                        key={index}
+                        className={`block relative p-4 border rounded-lg cursor-pointer transition-all ${
+                          selectedDimensionIndex === index 
+                            ? 'border-[#8C7354] bg-[#F9F5E7]' 
+                            : 'border-gray-200 hover:border-[#8C7354]'
+                        }`}
+                      >
+                        <input
+                          type="radio"
+                          name="dimension"
+                          className="absolute opacity-0"
+                          checked={selectedDimensionIndex === index}
+                          onChange={() => setSelectedDimensionIndex(index)}
+                        />
+                        <div className="flex justify-between items-center">
+                          <div>
+                            <p className="font-medium text-[#4A3C2A]">{dim.dimension}</p>
+                            <p className="text-sm text-[#8C7354] mt-1">
+                              Wood Type: {dim.woodType} • Weight: {dim.weight} lbs
+                            </p>
+                          </div>
+                          <div className="text-right">
+                            <p className="font-bold text-[#4A3C2A]">${dim.price.toFixed(2)}</p>
+                            <p className={`text-sm ${dim.inStock ? 'text-green-600' : 'text-red-600'}`}>
+                              {dim.inStock ? 'In Stock' : 'Out of Stock'}
+                            </p>
+                          </div>
+                        </div>
+                      </label>
+                    ))}
+                  </div>
                 </div>
-                <div className="text-[#8C7354]">
-                  <span className="font-medium text-[#4A3C2A]">Dimensions:</span> {product.dimensions}
+              ) : (
+                <div className="mt-6">
+                  <div className="p-4 bg-[#F9F5E7] rounded-lg">
+                    <p className="text-[#8C7354] text-sm">
+                      Standard size • Wood Type: {product.woodType} • Weight: {product.weight} lbs
+                    </p>
+                  </div>
                 </div>
-                <div className="text-[#8C7354]">
-                  <span className="font-medium text-[#4A3C2A]">Weight:</span> {product.weight} lbs
-                </div>
-                <div className="text-[#8C7354]">
-                  <span className="font-medium text-[#4A3C2A]">SKU:</span> WCM-{product.id.toString().padStart(4, '0')}
-                </div>
-              </div>
+              )}
             </div>
 
             <div className="mb-8">
@@ -158,6 +220,7 @@ const ProductDetail = () => {
                   <button 
                     className="px-3 py-2 text-[#8C7354]"
                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                    disabled={!isInStock}
                   >
                     <i className="fas fa-minus"></i>
                   </button>
@@ -167,25 +230,23 @@ const ProductDetail = () => {
                     value={quantity} 
                     onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
                     className="w-12 text-center border-x border-gray-300 py-2 focus:outline-none"
+                    disabled={!isInStock}
                   />
                   <button 
                     className="px-3 py-2 text-[#8C7354]"
                     onClick={() => setQuantity(quantity + 1)}
+                    disabled={!isInStock}
                   >
                     <i className="fas fa-plus"></i>
                   </button>
                 </div>
                 
                 <button 
-                  className="flex-grow py-3 bg-[#8C7354] hover:bg-[#4A3C2A] text-white font-medium rounded-md transition duration-300"
+                  className="flex-grow py-3 bg-[#8C7354] hover:bg-[#4A3C2A] text-white font-medium rounded-md transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                   onClick={handleAddToCart}
-                  disabled={!product.inStock}
+                  disabled={!isInStock}
                 >
-                  {product.inStock ? 'Add to Cart' : 'Out of Stock'}
-                </button>
-                
-                <button className="w-12 h-12 flex items-center justify-center rounded-md border border-gray-300 text-[#8C7354] hover:bg-[#F9F5E7]">
-                  <i className="far fa-heart"></i>
+                  {isInStock ? 'Add to Cart' : 'Out of Stock'}
                 </button>
               </div>
             </div>

@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useLocation } from "wouter";
-import { Product, Category } from "@shared/schema";
+import { Product } from "@shared/schema";
 import ProductCard from "@/components/ProductCard";
+import ProductSidebar from "@/components/ProductSidebar";
+import { getProducts } from "@/services/api";
 
 const Products = () => {
   const [location] = useLocation();
@@ -27,15 +29,10 @@ const Products = () => {
     }
   }, [location]);
 
-  // Fetch all categories
-  const { data: categories } = useQuery<Category[]>({
-    queryKey: ['/api/categories'],
-  });
-
   // Fetch products with filters
   const { data: products, isLoading, error } = useQuery<Product[]>({
-    queryKey: ['/api/products', selectedCategory, searchQuery],
-    enabled: true,
+    queryKey: ['products', selectedCategory, searchQuery],
+    queryFn: getProducts
   });
 
   // Extract unique wood types from products
@@ -48,9 +45,13 @@ const Products = () => {
 
   // Filter products based on selected criteria
   const filteredProducts = products?.filter(product => {
+    const matchesCategory = !selectedCategory || product.category?.slug === selectedCategory;
     const matchesWoodType = selectedWoodTypes.length === 0 || selectedWoodTypes.includes(product.woodType);
     const matchesPrice = (product.salePrice || product.price) >= priceRange[0] && (product.salePrice || product.price) <= priceRange[1];
-    return matchesWoodType && matchesPrice;
+    const matchesSearch = !searchQuery || 
+      product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      product.description.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesWoodType && matchesPrice && matchesSearch;
   });
 
   // Handle wood type filter change
@@ -65,6 +66,13 @@ const Products = () => {
   // Handle price range change
   const handlePriceChange = (min: number, max: number) => {
     setPriceRange([min, max]);
+  };
+
+  // Handle reset filters
+  const handleResetFilters = () => {
+    setSelectedCategory(null);
+    setSelectedWoodTypes([]);
+    setPriceRange([0, 3000]);
   };
 
   if (isLoading) {
@@ -121,95 +129,17 @@ const Products = () => {
         </div>
 
         <div className="flex flex-col lg:flex-row gap-8">
-          {/* Filters Sidebar */}
-          <div className="lg:w-1/4">
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h2 className="font-playfair font-bold text-xl text-[#4A3C2A] mb-4">Filters</h2>
-              
-              {/* Categories Filter */}
-              <div className="mb-6">
-                <h3 className="font-medium text-[#4A3C2A] mb-3">Categories</h3>
-                <div className="space-y-2">
-                  <div className="flex items-center">
-                    <input 
-                      type="radio" 
-                      id="cat-all" 
-                      name="category" 
-                      className="mr-2"
-                      checked={!selectedCategory}
-                      onChange={() => setSelectedCategory(null)}
-                    />
-                    <label htmlFor="cat-all" className="text-[#8C7354]">All Products</label>
-                  </div>
-                  {categories?.map(category => (
-                    <div key={category.id} className="flex items-center">
-                      <input 
-                        type="radio" 
-                        id={`cat-${category.id}`} 
-                        name="category" 
-                        className="mr-2"
-                        checked={selectedCategory === category.slug}
-                        onChange={() => setSelectedCategory(category.slug)}
-                      />
-                      <label htmlFor={`cat-${category.id}`} className="text-[#8C7354]">{category.name}</label>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              
-              {/* Price Range Filter */}
-              <div className="mb-6">
-                <h3 className="font-medium text-[#4A3C2A] mb-3">Price Range</h3>
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-[#8C7354]">${priceRange[0]}</span>
-                  <input 
-                    type="range" 
-                    min="0" 
-                    max="3000" 
-                    step="100"
-                    value={priceRange[0]}
-                    onChange={(e) => handlePriceChange(parseInt(e.target.value), priceRange[1])}
-                    className="flex-grow"
-                  />
-                  <span className="text-[#8C7354]">${priceRange[1]}</span>
-                </div>
-                <div className="flex justify-between text-sm text-[#8C7354]">
-                  <span>Min: ${priceRange[0]}</span>
-                  <span>Max: ${priceRange[1]}</span>
-                </div>
-              </div>
-              
-              {/* Wood Type Filter */}
-              <div className="mb-6">
-                <h3 className="font-medium text-[#4A3C2A] mb-3">Wood Type</h3>
-                <div className="space-y-2">
-                  {woodTypes.map(type => (
-                    <div key={type} className="flex items-center">
-                      <input 
-                        type="checkbox" 
-                        id={`wood-${type}`} 
-                        className="mr-2"
-                        checked={selectedWoodTypes.includes(type)}
-                        onChange={() => handleWoodTypeChange(type)}
-                      />
-                      <label htmlFor={`wood-${type}`} className="text-[#8C7354]">{type}</label>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              
-              {/* Reset Filters Button */}
-              <button 
-                onClick={() => {
-                  setSelectedWoodTypes([]);
-                  setPriceRange([0, 3000]);
-                }}
-                className="w-full py-2 bg-[#F9F5E7] text-[#4A3C2A] rounded-md hover:bg-[#A38F71]/10 transition"
-              >
-                Reset Filters
-              </button>
-            </div>
-          </div>
+          {/* Sidebar */}
+          <ProductSidebar 
+            selectedCategory={selectedCategory}
+            onCategoryChange={setSelectedCategory}
+            priceRange={priceRange}
+            onPriceChange={handlePriceChange}
+            woodTypes={woodTypes}
+            selectedWoodTypes={selectedWoodTypes}
+            onWoodTypeChange={handleWoodTypeChange}
+            onResetFilters={handleResetFilters}
+          />
           
           {/* Products Grid */}
           <div className="lg:w-3/4">
@@ -227,12 +157,7 @@ const Products = () => {
                   Try adjusting your search or filters to find what you're looking for.
                 </p>
                 <button 
-                  onClick={() => {
-                    setSelectedCategory(null);
-                    setSearchQuery(null);
-                    setSelectedWoodTypes([]);
-                    setPriceRange([0, 3000]);
-                  }}
+                  onClick={handleResetFilters}
                   className="px-4 py-2 bg-[#8C7354] text-white rounded-md hover:bg-[#4A3C2A] transition"
                 >
                   View All Products

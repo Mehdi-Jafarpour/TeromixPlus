@@ -10,7 +10,7 @@ const About = () => {
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1544377193-33dcf4d68fb5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&h=400&q=80')" }}
         ></div>
         <div className="container mx-auto px-4 h-full flex flex-col justify-center relative z-10">
-          <h1 className="text-4xl md:text-5xl font-playfair font-bold text-white mb-4">About WoodCraft Millworks</h1>
+          <h1 className="text-4xl md:text-5xl font-playfair font-bold text-white mb-4">About Teromix+</h1>
           <p className="text-[#F9F5E7] text-lg md:text-xl max-w-2xl">
             Crafting exceptional wooden millwork and furniture with passion and precision since 1985
           </p>
@@ -27,13 +27,13 @@ const About = () => {
                 A Tradition of Excellence in Woodworking
               </h2>
               <p className="text-[#8C7354] mb-6 leading-relaxed">
-                WoodCraft Millworks began with a simple passion: creating beautiful, functional wooden pieces that stand the test of time. Founded in 1985 by master craftsman Thomas Anderson, our workshop started as a small operation focused on custom cabinetry in Portland, Oregon.
+                Teromix+ began with a simple passion: creating beautiful, functional wooden pieces that stand the test of time. Founded in 1985 by master craftsman Thomas Anderson, our workshop started as a small operation focused on custom cabinetry in Portland, Oregon.
               </p>
               <p className="text-[#8C7354] mb-6 leading-relaxed">
                 Over the decades, we've grown into a team of skilled artisans dedicated to preserving traditional woodworking techniques while embracing modern innovations. What hasn't changed is our commitment to quality materials, meticulous craftsmanship, and sustainable practices.
               </p>
               <p className="text-[#8C7354] leading-relaxed">
-                Today, WoodCraft Millworks continues to be a family-owned business, creating custom wooden elements for homes across the country. Each piece that leaves our workshop carries with it not just exceptional quality, but the rich heritage of our craft.
+                Today, Teromix+ continues to be a family-owned business, creating custom wooden elements for homes across the country. Each piece that leaves our workshop carries with it not just exceptional quality, but the rich heritage of our craft.
               </p>
             </div>
             <div className="relative">
@@ -63,7 +63,7 @@ const About = () => {
               The Principles That Guide Our Craft
             </h2>
             <p className="text-[#8C7354]">
-              At WoodCraft Millworks, we believe in creating products that honor the natural beauty of wood while ensuring they serve your home for generations to come.
+              At Teromix+, we believe in creating products that honor the natural beauty of wood while ensuring they serve your home for generations to come.
             </p>
           </div>
           
@@ -229,7 +229,7 @@ const About = () => {
       <section className="py-16 bg-[#4A3C2A] text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-playfair font-bold mb-6">
-            Experience the WoodCraft Difference
+            Experience the Teromix+ Difference
           </h2>
           <p className="text-[#F9F5E7]/90 max-w-2xl mx-auto mb-8">
             Whether you're looking for a signature piece from our collections or seeking a custom creation, we're here to bring your vision to life.

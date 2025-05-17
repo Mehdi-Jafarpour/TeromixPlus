@@ -90,13 +90,12 @@ const Contact = () => {
                   <div className="ml-4">
                     <h3 className="font-bold text-[#4A3C2A] mb-1">Email Us</h3>
                     <p className="text-[#8C7354]">
-                      <a href="mailto:info@woodcraftmillworks.com" className="hover:text-[#4A3C2A] transition-colors">
-                        info@woodcraftmillworks.com
+                      <a href="mailto:info@teromixplus.com" className="hover:text-[#4A3C2A] transition-colors">
+                        info@teromixplus.com
                       </a>
-                    </p>
-                    <p className="text-[#8C7354]">
-                      <a href="mailto:sales@woodcraftmillworks.com" className="hover:text-[#4A3C2A] transition-colors">
-                        sales@woodcraftmillworks.com
+                      <br />
+                      <a href="mailto:sales@teromixplus.com" className="hover:text-[#4A3C2A] transition-colors">
+                        sales@teromixplus.com
                       </a>
                     </p>
                   </div>
@@ -237,7 +236,7 @@ const Contact = () => {
             allowFullScreen 
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            title="WoodCraft Millworks Location"
+            title="Teromix+ Location"
           ></iframe>
         </div>
       </div>

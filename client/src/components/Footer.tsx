@@ -7,8 +7,8 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
             <Link href="/" className="inline-block mb-4">
-              <span className="text-white font-playfair text-2xl font-bold">WoodCraft</span>
-              <span className="text-[#A38F71] font-playfair italic text-xl ml-1">Millworks</span>
+              <span className="text-white font-playfair text-2xl font-bold">Teromix</span>
+              <span className="text-[#A38F71] font-playfair text-xl">+</span>
             </Link>
             <p className="text-[#F9F5E7]/80 mb-6">Crafting exceptional wooden millwork for distinctive homes since 1985.</p>
             <div className="flex space-x-4">
@@ -57,7 +57,7 @@ const Footer = () => {
               123 Craftsman Way<br />
               Portland, OR 97205<br /><br />
               <a href="tel:+15035551234" className="hover:text-white transition-colors">Phone: (503) 555-1234</a><br />
-              <a href="mailto:info@woodcraftmillworks.com" className="hover:text-white transition-colors">info@woodcraftmillworks.com</a>
+              <a href="mailto:info@teromixplus.com" className="hover:text-white transition-colors">info@teromixplus.com</a>
             </address>
             <p className="text-[#F9F5E7]/80">
               <span className="block mb-1"><strong className="text-white">Hours:</strong></span>
@@ -69,7 +69,7 @@ const Footer = () => {
         </div>
         
         <div className="border-t border-[#8C7354]/30 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-[#F9F5E7]/70 text-sm mb-4 md:mb-0">© {new Date().getFullYear()} WoodCraft Millworks. All rights reserved.</p>
+          <p className="text-[#F9F5E7]/70 text-sm mb-4 md:mb-0">© {new Date().getFullYear()} Teromix+. All rights reserved.</p>
           <div className="flex flex-wrap justify-center gap-4 text-sm text-[#F9F5E7]/70">
             <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>

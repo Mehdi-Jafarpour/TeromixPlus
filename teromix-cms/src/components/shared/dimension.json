@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_shared_dimensions",
+  "info": {
+    "displayName": "dimension",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "code": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "dimension": {
+      "type": "string"
+    },
+    "price": {
+      "type": "decimal",
+      "required": true
+    },
+    "inStock": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "isFeatured": {
+      "type": "boolean",
+      "default": false
+    },
+    "woodType": {
+      "type": "string"
+    },
+    "weight": {
+      "type": "decimal"
+    }
+  }
+}
