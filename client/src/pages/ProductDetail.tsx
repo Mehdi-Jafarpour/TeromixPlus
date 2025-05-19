@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams, Link } from "wouter";
 import { useCart } from "@/contexts/CartContext";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Product } from "@shared/schema";
 import { useToast } from "@/hooks/use-toast";
 import ProductCard from "@/components/ProductCard";
@@ -16,6 +16,70 @@ interface Dimension {
   weight: number;
   inStock: boolean;
 }
+
+interface ZoomableImageProps {
+  src: string;
+  alt: string;
+}
+
+const ZoomableImage = ({ src, alt }: ZoomableImageProps) => {
+  const [isZoomed, setIsZoomed] = useState(false);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const containerRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLImageElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!containerRef.current || !imageRef.current) return;
+
+    const { left, top, width, height } = containerRef.current.getBoundingClientRect();
+    const x = ((e.clientX - left) / width) * 100;
+    const y = ((e.clientY - top) / height) * 100;
+
+    setPosition({ x, y });
+  };
+
+  return (
+    <div 
+      ref={containerRef}
+      className="relative overflow-hidden bg-white rounded-lg shadow-md"
+      onMouseEnter={() => setIsZoomed(true)}
+      onMouseLeave={() => setIsZoomed(false)}
+      onMouseMove={handleMouseMove}
+    >
+      {/* Main Image */}
+      <img 
+        ref={imageRef}
+        src={src}
+        alt={alt}
+        className="w-full h-full object-cover"
+      />
+
+      {/* Zoom Lens */}
+      {isZoomed && (
+        <div 
+          className="absolute w-[150px] h-[150px] border-2 border-white rounded-full overflow-hidden pointer-events-none shadow-lg"
+          style={{
+            left: `calc(${position.x}% - 75px)`,
+            top: `calc(${position.y}% - 75px)`,
+            transform: 'translate(-50%, -50%)'
+          }}
+        >
+          <div 
+            className="absolute w-[300%] h-[300%]"
+            style={{
+              left: `-${position.x}%`,
+              top: `-${position.y}%`,
+              backgroundImage: `url(${src})`,
+              backgroundSize: '300%',
+              backgroundPosition: `${position.x}% ${position.y}%`,
+              backgroundRepeat: 'no-repeat'
+            }}
+          />
+        </div>
+      )}
+    </div>
+  );
+};
 
 const ProductDetail = () => {
   const { slug } = useParams();
@@ -121,13 +185,10 @@ const ProductDetail = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Product Image */}
-          <div className="bg-white rounded-lg overflow-hidden shadow-md">
-            <img 
-              src={product.imageUrl}
-              alt={product.name}
-              className="w-full h-full object-cover"
-            />
-          </div>
+          <ZoomableImage 
+            src={product.imageUrl}
+            alt={product.name}
+          />
 
           {/* Product Details */}
           <div>
@@ -272,33 +333,16 @@ const ProductDetail = () => {
 
         {/* Product Tabs */}
         <div className="mt-16">
-          <div className="border-b border-gray-200 mb-8">
-            <div className="flex overflow-x-auto">
-              <button className="px-6 py-3 text-[#4A3C2A] font-medium border-b-2 border-[#8C7354] focus:outline-none">
-                Description
-              </button>
-              <button className="px-6 py-3 text-[#8C7354] hover:text-[#4A3C2A] focus:outline-none">
-                Specifications
-              </button>
-              <button className="px-6 py-3 text-[#8C7354] hover:text-[#4A3C2A] focus:outline-none">
-                Reviews ({product.reviewCount})
-              </button>
-              <button className="px-6 py-3 text-[#8C7354] hover:text-[#4A3C2A] focus:outline-none">
-                Shipping & Returns
-              </button>
-            </div>
-          </div>
-          
           <div className="bg-white p-8 rounded-lg shadow-md mb-12">
             <h3 className="font-playfair font-bold text-xl text-[#4A3C2A] mb-4">Product Description</h3>
-            <p className="text-[#8C7354] leading-relaxed mb-4">
-              {product.description}
-            </p>
-            <p className="text-[#8C7354] leading-relaxed">
-              Each piece is meticulously handcrafted by our master woodworkers, ensuring the highest quality and attention to detail. 
-              We use only sustainably sourced {product.woodType.toLowerCase()} wood, selected for its beauty, durability, and character.
-              The natural variations in grain and color make each piece unique, celebrating the inherent beauty of the material.
-            </p>
+            <div className="text-[#8C7354] leading-relaxed space-y-4">
+              <p>{product.description}</p>
+              <p>
+                Each piece is meticulously handcrafted by our master woodworkers, ensuring the highest quality and attention to detail. 
+                We use only sustainably sourced {product.woodType.toLowerCase()} wood, selected for its beauty, durability, and character.
+                The natural variations in grain and color make each piece unique, celebrating the inherent beauty of the material.
+              </p>
+            </div>
           </div>
         </div>
 
