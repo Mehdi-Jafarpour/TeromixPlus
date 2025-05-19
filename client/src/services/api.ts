@@ -57,7 +57,15 @@ const transformProduct = (item: any) => {
     description: item.description?.[0]?.children?.[0]?.text || '',
     price: item.dimensions?.[0]?.price || 0,
     woodType: item.dimensions?.[0]?.woodType || '',
-    dimensions: item.dimensions?.[0]?.dimension || '',
+    dimensions: item.dimensions?.map((dim: any) => ({
+      id: dim.id,
+      code: dim.code,
+      dimension: dim.dimension,
+      price: dim.price,
+      woodType: dim.woodType,
+      weight: dim.weight,
+      inStock: dim.inStock ?? true
+    })) || [],
     weight: item.dimensions?.[0]?.weight || 0,
     rating: item.rating || 0,
     reviewCount: item.reviewCount || 0,

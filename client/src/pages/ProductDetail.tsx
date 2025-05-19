@@ -8,8 +8,10 @@ import ProductCard from "@/components/ProductCard";
 import { getProduct, getProducts } from "@/services/api";
 
 interface Dimension {
-  price: number;
+  id: number;
+  code: string;
   dimension: string;
+  price: number;
   woodType: string;
   weight: number;
   inStock: boolean;
@@ -44,16 +46,16 @@ const ProductDetail = () => {
   ).slice(0, 4);
 
   const handleAddToCart = () => {
-    if (product && product.dimensions) {
+    if (product && product.dimensions && product.dimensions.length > 0) {
       const selectedDimension = product.dimensions[selectedDimensionIndex];
       const productWithSelectedDimension = {
         ...product,
         price: selectedDimension.price,
-        dimensions: selectedDimension.dimension,
+        dimension: selectedDimension.dimension,
         woodType: selectedDimension.woodType,
         weight: selectedDimension.weight,
         inStock: selectedDimension.inStock,
-        selectedDimensionIndex // Store the selected dimension index
+        selectedDimensionIndex
       };
       
       addToCart(productWithSelectedDimension, quantity);
@@ -171,7 +173,7 @@ const ProductDetail = () => {
                   <div className="space-y-3">
                     {dimensions.map((dim, index) => (
                       <label 
-                        key={index}
+                        key={dim.id || index}
                         className={`block relative p-4 border rounded-lg cursor-pointer transition-all ${
                           selectedDimensionIndex === index 
                             ? 'border-[#8C7354] bg-[#F9F5E7]' 
@@ -207,7 +209,7 @@ const ProductDetail = () => {
                 <div className="mt-6">
                   <div className="p-4 bg-[#F9F5E7] rounded-lg">
                     <p className="text-[#8C7354] text-sm">
-                      Standard size • Wood Type: {product.woodType} • Weight: {product.weight} lbs
+                      Standard size • Wood Type: {product?.woodType} • Weight: {product?.weight} lbs
                     </p>
                   </div>
                 </div>

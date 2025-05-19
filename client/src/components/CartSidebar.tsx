@@ -84,35 +84,35 @@ export const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
                         <div className="text-sm text-[#8C7354] space-y-1">
                           <p>Size: {dimension.dimension}</p>
                           <p>Wood: {dimension.woodType}</p>
+                          <p>Weight: {dimension.weight} lbs</p>
+                          <p className="font-medium">${dimension.price.toFixed(2)}</p>
                         </div>
                       )}
-                      <div className="flex justify-between mt-2">
-                        <div className="flex items-center">
+                      <div className="flex items-center justify-between mt-2">
+                        <div className="flex items-center border border-gray-300 rounded-md">
                           <button 
-                            className="w-6 h-6 bg-[#F9F5E7] rounded text-[#8C7354]"
+                            className="px-2 py-1 text-[#8C7354]"
                             onClick={() => updateCartItemQuantity(item.id, item.quantity - 1)}
+                            disabled={item.quantity <= 1}
                           >
-                            -
+                            <i className="fas fa-minus"></i>
                           </button>
-                          <span className="mx-2 text-[#4A3C2A]">{item.quantity}</span>
+                          <span className="px-2 py-1">{item.quantity}</span>
                           <button 
-                            className="w-6 h-6 bg-[#F9F5E7] rounded text-[#8C7354]"
+                            className="px-2 py-1 text-[#8C7354]"
                             onClick={() => updateCartItemQuantity(item.id, item.quantity + 1)}
                           >
-                            +
+                            <i className="fas fa-plus"></i>
                           </button>
                         </div>
-                        <span className="font-medium text-[#4A3C2A]">
-                          ${((item.product.price) * item.quantity).toFixed(2)}
-                        </span>
+                        <button 
+                          className="text-red-500 hover:text-red-700"
+                          onClick={() => removeFromCart(item.id)}
+                        >
+                          <i className="fas fa-trash"></i>
+                        </button>
                       </div>
                     </div>
-                    <button 
-                      className="ml-2 text-gray-400 hover:text-[#8C7354]"
-                      onClick={() => removeFromCart(item.id)}
-                    >
-                      <i className="fas fa-trash-alt"></i>
-                    </button>
                   </div>
                 );
               })}
