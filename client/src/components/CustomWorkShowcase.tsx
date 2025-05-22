@@ -11,7 +11,7 @@ const CustomWorkShowcase = () => {
     const fetchProjects = async () => {
       try {
         const data = await getProjects();
-        console.log('Projects data received in component:', data);
+        console.log('Projects received in component:', data);
         setProjects(data || []);
       } catch (error) {
         console.error('Error fetching projects:', error);
@@ -22,6 +22,24 @@ const CustomWorkShowcase = () => {
 
     fetchProjects();
   }, []);
+
+  const getDescriptionText = (description: any) => {
+    if (!description) return 'No description available';
+
+    // Handle rich text structure
+    if (Array.isArray(description)) {
+      return description.map(block => {
+        if (block.type === 'paragraph' && Array.isArray(block.children)) {
+          return block.children
+            .map(child => child.text || '')
+            .join(' ');
+        }
+        return '';
+      }).join(' ');
+    }
+
+    return 'No description available';
+  };
 
   // Debug render
   console.log('Current projects state:', projects);
@@ -50,6 +68,10 @@ const CustomWorkShowcase = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects.map((project) => {
               console.log('Rendering project:', project);
+              console.log('Project description before processing:', project.Description);
+              const descriptionText = getDescriptionText(project.Description);
+              console.log('Final description text:', descriptionText);
+              
               return (
                 <div key={project.id} className="bg-[#F9F5E7] rounded-lg overflow-hidden shadow-md">
                   <div className="h-64">
@@ -66,9 +88,7 @@ const CustomWorkShowcase = () => {
                       {project.Title}
                     </h3>
                     <p className="text-[#8C7354] mb-4">
-                      {Array.isArray(project.Description) 
-                        ? project.Description.join(' ')
-                        : project.Description}
+                      {descriptionText}
                     </p>
                     <div className="flex justify-between items-center">
                       <span className="text-xs bg-white px-3 py-1 rounded-full text-[#8C7354]">

@@ -471,7 +471,7 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     Location: Schema.Attribute.String & Schema.Attribute.Required;
-    Photo: Schema.Attribute.Media<'images' | 'files', true> &
+    Photo: Schema.Attribute.Media<'images' | 'files'> &
       Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     Title: Schema.Attribute.String & Schema.Attribute.Required;

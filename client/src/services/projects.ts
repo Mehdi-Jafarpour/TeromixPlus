@@ -26,7 +26,8 @@ export const getProjects = async () => {
         populate: '*',
       },
     });
-    console.log('Projects API Response:', response.data);
+    console.log('Full API Response:', response.data);
+    console.log('Projects data structure:', JSON.stringify(response.data.data, null, 2));
     return response.data.data;
   } catch (error) {
     console.error('Error fetching projects:', error);
