@@ -48,7 +48,7 @@ const Contact = () => {
   return (
     <div className="bg-[#F9F5E7]">
       {/* Hero Section */}
-      <div className="relative bg-[#4A3C2A] h-[250px] md:h-[300px]">
+      <div className="relative bg-[#73946B] h-[250px] md:h-[300px]">
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-30" 
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1609921205586-7e8a57516512?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&h=300&q=80')" }}
@@ -66,16 +66,16 @@ const Contact = () => {
           {/* Contact Information */}
           <div className="lg:col-span-1">
             <div className="bg-white p-8 rounded-lg shadow-md h-full">
-              <h2 className="text-2xl font-playfair font-bold text-[#4A3C2A] mb-6">Get In Touch</h2>
+              <h2 className="text-2xl font-playfair font-bold text-[#73946B] mb-6">Get In Touch</h2>
               
               <div className="space-y-6">
                 <div className="flex items-start">
-                  <div className="bg-[#F9F5E7] w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 text-[#8C7354]">
+                  <div className="bg-[#F9F5E7] w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 text-[#73946B]">
                     <i className="fas fa-map-marker-alt text-lg"></i>
                   </div>
                   <div className="ml-4">
-                    <h3 className="font-bold text-[#4A3C2A] mb-1">Visit Us</h3>
-                    <address className="not-italic text-[#8C7354]">
+                    <h3 className="font-bold text-[#73946B] mb-1">Visit Us</h3>
+                    <address className="not-italic text-[#73946B]">
                       123 Craftsman Way<br />
                       Portland, OR 97205<br />
                       United States
@@ -84,12 +84,12 @@ const Contact = () => {
                 </div>
                 
                 <div className="flex items-start">
-                  <div className="bg-[#F9F5E7] w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 text-[#8C7354]">
+                  <div className="bg-[#F9F5E7] w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 text-[#73946B]">
                     <i className="fas fa-envelope text-lg"></i>
                   </div>
                   <div className="ml-4">
-                    <h3 className="font-bold text-[#4A3C2A] mb-1">Email Us</h3>
-                    <p className="text-[#8C7354]">
+                    <h3 className="font-bold text-[#73946B] mb-1">Email Us</h3>
+                    <p className="text-[#73946B]">
                       <a href="mailto:info@teromixplus.com" className="hover:text-[#4A3C2A] transition-colors">
                         info@teromixplus.com
                       </a>
@@ -102,27 +102,27 @@ const Contact = () => {
                 </div>
                 
                 <div className="flex items-start">
-                  <div className="bg-[#F9F5E7] w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 text-[#8C7354]">
+                  <div className="bg-[#F9F5E7] w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 text-[#73946B]">
                     <i className="fas fa-phone-alt text-lg"></i>
                   </div>
                   <div className="ml-4">
-                    <h3 className="font-bold text-[#4A3C2A] mb-1">Call Us</h3>
-                    <p className="text-[#8C7354]">
+                    <h3 className="font-bold text-[#73946B] mb-1">Call Us</h3>
+                    <p className="text-[#73946B]">
                       <a href="tel:+15035551234" className="hover:text-[#4A3C2A] transition-colors">
                         (503) 555-1234
                       </a>
                     </p>
-                    <p className="text-[#8C7354]">Mon-Fri: 9am-6pm, Sat: 10am-4pm</p>
+                    <p className="text-[#73946B]">Mon-Fri: 9am-6pm, Sat: 10am-4pm</p>
                   </div>
                 </div>
                 
                 <div className="flex items-start">
-                  <div className="bg-[#F9F5E7] w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 text-[#8C7354]">
+                  <div className="bg-[#F9F5E7] w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 text-[#73946B]">
                     <i className="fas fa-share-alt text-lg"></i>
                   </div>
                   <div className="ml-4">
-                    <h3 className="font-bold text-[#4A3C2A] mb-1">Follow Us</h3>
-                    <div className="flex space-x-3 text-[#8C7354]">
+                    <h3 className="font-bold text-[#73946B] mb-1">Follow Us</h3>
+                    <div className="flex space-x-3 text-[#73946B]">
                       <a href="#" className="hover:text-[#4A3C2A] transition-colors">
                         <i className="fab fa-facebook-f text-lg"></i>
                       </a>
@@ -145,12 +145,12 @@ const Contact = () => {
           {/* Contact Form */}
           <div className="lg:col-span-2">
             <div className="bg-white p-8 rounded-lg shadow-md">
-              <h2 className="text-2xl font-playfair font-bold text-[#4A3C2A] mb-6">Send Us a Message</h2>
+              <h2 className="text-2xl font-playfair font-bold text-[#73946B] mb-6">Send Us a Message</h2>
               
               <form onSubmit={form.handleSubmit(onSubmit)}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <div>
-                    <label htmlFor="name" className="block text-[#4A3C2A] mb-1">Full Name*</label>
+                    <label htmlFor="name" className="block text-[#73946B] mb-1">Full Name*</label>
                     <input 
                       type="text" 
                       id="name"
@@ -163,7 +163,7 @@ const Contact = () => {
                   </div>
                   
                   <div>
-                    <label htmlFor="email" className="block text-[#4A3C2A] mb-1">Email Address*</label>
+                    <label htmlFor="email" className="block text-[#73946B] mb-1">Email Address*</label>
                     <input 
                       type="email" 
                       id="email"
@@ -176,7 +176,7 @@ const Contact = () => {
                   </div>
                   
                   <div>
-                    <label htmlFor="phone" className="block text-[#4A3C2A] mb-1">Phone Number (Optional)</label>
+                    <label htmlFor="phone" className="block text-[#73946B] mb-1">Phone Number (Optional)</label>
                     <input 
                       type="tel" 
                       id="phone"
@@ -186,7 +186,7 @@ const Contact = () => {
                   </div>
                   
                   <div>
-                    <label htmlFor="subject" className="block text-[#4A3C2A] mb-1">Subject*</label>
+                    <label htmlFor="subject" className="block text-[#73946B] mb-1">Subject*</label>
                     <input 
                       type="text" 
                       id="subject"
@@ -200,7 +200,7 @@ const Contact = () => {
                 </div>
                 
                 <div className="mb-6">
-                  <label htmlFor="message" className="block text-[#4A3C2A] mb-1">Message*</label>
+                  <label htmlFor="message" className="block text-[#73946B] mb-1">Message*</label>
                   <textarea 
                     id="message" 
                     rows={6}
@@ -214,7 +214,7 @@ const Contact = () => {
                 
                 <button 
                   type="submit" 
-                  className="px-6 py-3 bg-[#8C7354] hover:bg-[#4A3C2A] text-white font-medium rounded-md transition duration-300 disabled:opacity-70"
+                  className="px-6 py-3 bg-[#73946B] hover:bg-[#4A3C2A] text-white font-medium rounded-md transition duration-300 disabled:opacity-70"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? "Sending..." : "Send Message"}

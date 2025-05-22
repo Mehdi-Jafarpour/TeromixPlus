@@ -128,7 +128,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
             <div className="flex space-x-2">
               <button 
                 onClick={handleAddToCart}
-                className="bg-[#8C7354] hover:bg-[#4A3C2A] text-white text-sm py-1 px-3 rounded-md flex-grow transition"
+                className="bg-[#73946B] hover:bg-[#4A3C2A] text-white text-sm py-1 px-3 rounded-md flex-grow transition"
                 disabled={!inStock}
               >
                 {!inStock ? t('products.out_of_stock') : t('products.add_to_cart')}
@@ -156,7 +156,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
                   window.location.href = `/products?category=${product.category.slug}`;
                 }
               }}
-              className="text-xs text-[#8C7354] bg-[#F9F5E7] px-2 py-1 rounded-full hover:bg-[#A38F71]/10"
+              className="text-xs text-[#73946B] bg-[#F9F5E7] px-2 py-1 rounded-full hover:bg-[#A38F71]/10"
             >
               {product.category.name}
             </button>

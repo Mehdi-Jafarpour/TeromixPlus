@@ -79,7 +79,7 @@ const Products = () => {
     return (
       <div className="container mx-auto px-4 py-12">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-playfair font-bold text-[#4A3C2A]">
+          <h1 className="text-3xl font-playfair font-bold text-[#73946B]">
             {searchQuery ? `Search Results for "${searchQuery}"` : "All Products"}
           </h1>
           <p className="text-[#8C7354] mt-2">Loading products...</p>
@@ -103,7 +103,7 @@ const Products = () => {
   if (error) {
     return (
       <div className="container mx-auto px-4 py-12 text-center">
-        <h1 className="text-3xl font-playfair font-bold text-[#4A3C2A] mb-4">
+        <h1 className="text-3xl font-playfair font-bold text-[#73946B] mb-4">
           {searchQuery ? `Search Results for "${searchQuery}"` : "All Products"}
         </h1>
         <p className="text-red-500">Failed to load products. Please try again later.</p>
@@ -115,7 +115,7 @@ const Products = () => {
     <div className="bg-[#F9F5E7]">
       <div className="container mx-auto px-4 py-12">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-playfair font-bold text-[#4A3C2A]">
+          <h1 className="text-3xl font-playfair font-bold text-[#73946B]">
             {searchQuery 
               ? `Search Results for "${searchQuery}"` 
               : selectedCategory 
@@ -152,13 +152,13 @@ const Products = () => {
             ) : (
               <div className="bg-white p-8 rounded-lg text-center">
                 <i className="fas fa-search text-5xl text-[#8C7354] mb-4"></i>
-                <h3 className="font-playfair font-bold text-xl text-[#4A3C2A] mb-2">No Products Found</h3>
+                <h3 className="font-playfair font-bold text-xl text-[#73946B] mb-2">No Products Found</h3>
                 <p className="text-[#8C7354] mb-4">
                   Try adjusting your search or filters to find what you're looking for.
                 </p>
                 <button 
                   onClick={handleResetFilters}
-                  className="px-4 py-2 bg-[#8C7354] text-white rounded-md hover:bg-[#4A3C2A] transition"
+                  className="px-4 py-2 bg-[#73946B] text-white rounded-md hover:bg-[#8C7354] transition"
                 >
                   View All Products
                 </button>

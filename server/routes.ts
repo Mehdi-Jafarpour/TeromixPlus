@@ -3,7 +3,6 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { z } from "zod";
 import { 
-  insertUserSchema, 
   insertProductSchema, 
   insertCartItemSchema, 
   insertOrderSchema, 
@@ -12,11 +11,70 @@ import {
 } from "@shared/schema";
 import { ZodError } from "zod";
 import { fromZodError } from "zod-validation-error";
+import nodemailer from "nodemailer";
+
+// Create a transporter for sending emails
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL_USER || 'm.jafarpour.teromix.ge',
+    pass: process.env.EMAIL_PASSWORD // You'll need to set this in your environment variables
+  }
+});
+
+// Function to send pre-order notifications
+async function sendPreOrderNotifications(customerInfo: any, items: any[], total: number) {
+  const orderDetails = items.map(item => `
+    Product: ${item.productName}
+    Dimension: ${item.dimension}
+    Quantity: ${item.quantity}
+    Price: $${item.price.toFixed(2)}
+  `).join('\n\n');
+
+  // Email to customer
+  await transporter.sendMail({
+    from: process.env.EMAIL_USER || 'm.jafarpour.teromix.ge',
+    to: customerInfo.email,
+    subject: 'Your Pre-Order Confirmation - Teromix',
+    html: `
+      <h2>Thank you for your pre-order!</h2>
+      <p>Dear ${customerInfo.fullName},</p>
+      <p>We have received your pre-order and will contact you shortly to finalize your purchase.</p>
+      
+      <h3>Order Details:</h3>
+      <pre>${orderDetails}</pre>
+      
+      <p><strong>Total Amount:</strong> $${total.toFixed(2)}</p>
+      
+      <p>If you have any questions, please don't hesitate to contact us.</p>
+      
+      <p>Best regards,<br>The Teromix Team</p>
+    `
+  });
+
+  // Email to admin
+  await transporter.sendMail({
+    from: process.env.EMAIL_USER || 'm.jafarpour.teromix.ge',
+    to: process.env.ADMIN_EMAIL || 'm.jafarpour.teromix.ge',
+    subject: 'New Pre-Order Received',
+    html: `
+      <h2>New Pre-Order Received</h2>
+      
+      <h3>Customer Information:</h3>
+      <p>Name: ${customerInfo.fullName}</p>
+      <p>Email: ${customerInfo.email}</p>
+      <p>Phone: ${customerInfo.phone}</p>
+      ${customerInfo.message ? `<p>Additional Notes: ${customerInfo.message}</p>` : ''}
+      
+      <h3>Order Details:</h3>
+      <pre>${orderDetails}</pre>
+      
+      <p><strong>Total Amount:</strong> $${total.toFixed(2)}</p>
+    `
+  });
+}
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  // prefix all routes with /api
-  const apiRouter = app.route("/api");
-
   // Categories
   app.get("/api/categories", async (req: Request, res: Response) => {
     try {
@@ -93,11 +151,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Cart Operations
   app.get("/api/cart", async (req: Request, res: Response) => {
     try {
-      // In a real application, we would get the user ID from the session
-      // For now, we'll use a hardcoded user ID for demonstration
-      const userId = 1;
-      
-      const cartItems = await storage.getCartItems(userId);
+      const cartItems = await storage.getCartItems();
       res.json(cartItems);
     } catch (error) {
       res.status(500).json({ message: "Failed to fetch cart items" });
@@ -106,14 +160,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.post("/api/cart", async (req: Request, res: Response) => {
     try {
-      // Validate the request body
-      const userId = 1; // Hardcoded for now
-      
-      const parsedBody = insertCartItemSchema.parse({
-        ...req.body,
-        userId
-      });
-      
+      const parsedBody = insertCartItemSchema.parse(req.body);
       const cartItem = await storage.addToCart(parsedBody);
       res.status(201).json(cartItem);
     } catch (error) {
@@ -164,8 +211,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.delete("/api/cart", async (req: Request, res: Response) => {
     try {
-      const userId = 1; // Hardcoded for now
-      await storage.clearCart(userId);
+      await storage.clearCart();
       res.json({ success: true });
     } catch (error) {
       res.status(500).json({ message: "Failed to clear cart" });
@@ -175,10 +221,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Orders
   app.post("/api/orders", async (req: Request, res: Response) => {
     try {
-      const userId = 1; // Hardcoded for now
-      
-      // Get the user's cart items
-      const cartItems = await storage.getCartItems(userId);
+      // Get the cart items
+      const cartItems = await storage.getCartItems();
       
       if (cartItems.length === 0) {
         return res.status(400).json({ message: "Cart is empty" });
@@ -202,7 +246,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // Create the order
       const order = await storage.createOrder({
-        userId,
         totalAmount,
         status: "pending",
         shippingAddress,
@@ -222,7 +265,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
       
       // Clear the cart
-      await storage.clearCart(userId);
+      await storage.clearCart();
       
       // Fetch the complete order with items
       const completeOrder = await storage.getOrderById(order.id);
@@ -240,8 +283,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.get("/api/orders", async (req: Request, res: Response) => {
     try {
-      const userId = 1; // Hardcoded for now
-      const orders = await storage.getOrdersByUser(userId);
+      const orders = await storage.getOrders();
       res.json(orders);
     } catch (error) {
       res.status(500).json({ message: "Failed to fetch orders" });
@@ -275,9 +317,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.post("/api/testimonials", async (req: Request, res: Response) => {
     try {
-      // Validate the request body
       const parsedBody = insertTestimonialSchema.parse(req.body);
-      
       const testimonial = await storage.createTestimonial(parsedBody);
       res.status(201).json(testimonial);
     } catch (error) {
@@ -287,6 +327,63 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
       
       res.status(500).json({ message: "Failed to create testimonial" });
+    }
+  });
+
+  // Pre-Orders
+  app.post("/api/pre-orders", async (req: Request, res: Response) => {
+    try {
+      const { customerInfo, items, total } = req.body;
+      
+      // Send email notifications
+      await sendPreOrderNotifications(customerInfo, items, total);
+      
+      // Here you would typically save the pre-order to your database
+      console.log('New Pre-Order:', {
+        customerInfo,
+        items,
+        total,
+        timestamp: new Date().toISOString()
+      });
+      
+      res.status(201).json({
+        message: "Pre-order submitted successfully",
+        orderId: Date.now() // Temporary order ID
+      });
+    } catch (error) {
+      console.error('Pre-order submission error:', error);
+      res.status(500).json({ message: "Failed to submit pre-order" });
+    }
+  });
+
+  // Newsletter subscription endpoint
+  app.post('/api/newsletter/subscribe', async (req, res) => {
+    try {
+      const { email, marketingEmail } = req.body;
+
+      if (!email || !email.includes('@')) {
+        return res.status(400).json({ error: 'Invalid email address' });
+      }
+
+      // Send email to marketing
+      const mailOptions = {
+        from: process.env.EMAIL_USER,
+        to: marketingEmail,
+        subject: 'New Newsletter Subscription',
+        text: `A new user has subscribed to the newsletter:\nEmail: ${email}`,
+        html: `
+          <h2>New Newsletter Subscription</h2>
+          <p>A new user has subscribed to the newsletter:</p>
+          <p><strong>Email:</strong> ${email}</p>
+        `
+      };
+
+      await transporter.sendMail(mailOptions);
+
+      res.status(200).json({ message: 'Subscription successful' });
+    } catch (error) {
+      console.error('Newsletter subscription error:', error);
+      res.status(500).json({ error: 'Failed to process subscription' });
     }
   });
 

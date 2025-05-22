@@ -171,14 +171,14 @@ const Cart = () => {
                 </div>
                 
                 <div className="space-y-2">
-                  <Link href="/checkout">
+                  <Link href="/pre-order">
                     <button className="w-full py-3 bg-[#8C7354] hover:bg-[#4A3C2A] text-white font-medium rounded-md transition duration-300">
-                      Proceed to Checkout
+                      Place Pre-Order
                     </button>
                   </Link>
                   <div className="flex items-center justify-center mt-4 text-sm text-[#8C7354]">
-                    <i className="fas fa-lock mr-2"></i>
-                    <span>Secure checkout powered by Stripe</span>
+                    <i className="fas fa-info-circle mr-2"></i>
+                    <span>We will contact you to finalize your purchase</span>
                   </div>
                 </div>
               </div>

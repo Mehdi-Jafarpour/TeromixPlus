@@ -38,7 +38,7 @@ const About = () => {
             </div>
             <div className="relative">
               <img 
-                src="https://www.bestdesignprojects.com/wp-content/uploads/2019/03/The-Best-Of-American-Craftsmanship-In-Three-Amazing-Artists-capa-715x400.jpg" 
+                src="https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=800&q=80" 
                 alt="Craftsman working on wooden furniture" 
                 className="rounded-lg shadow-xl w-full"
               />
@@ -117,21 +117,21 @@ const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="aspect-[4/3] overflow-hidden rounded-lg shadow-md">
               <img 
-                src="https://www.robertogiovannini.com/media/news/CF062228.jpg" 
+                src="https://images.unsplash.com/photo-1571942676516-bcab84649e44?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=375&q=80" 
                 alt="Wood workshop with various tools" 
                 className="w-full h-full object-cover"
               />
             </div>
             <div className="aspect-[4/3] overflow-hidden rounded-lg shadow-md">
               <img 
-                src="https://www.robertogiovannini.com/media/news/DSC00579.jpg" 
+                src="https://images.unsplash.com/photo-1564498986552-13aeecb8a22c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=375&q=80" 
                 alt="Craftsman working on wooden cabinets" 
                 className="w-full h-full object-cover"
               />
             </div>
             <div className="aspect-[4/3] overflow-hidden rounded-lg shadow-md">
               <img 
-                src="https://www.robertogiovannini.com/media/news/CF062348.jpg" 
+                src="https://images.unsplash.com/photo-1568313108905-ab9ae7eab9e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=375&q=80" 
                 alt="Selection of wood materials" 
                 className="w-full h-full object-cover"
               />

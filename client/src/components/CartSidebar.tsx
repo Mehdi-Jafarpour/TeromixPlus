@@ -35,8 +35,13 @@ export const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
     };
   }, [isOpen, onClose]);
 
+  const handleRemoveItem = (itemId: string) => {
+    removeFromCart(itemId);
+  };
+
   return (
     <div 
+      id="cart-sidebar"
       className={`fixed inset-y-0 right-0 w-full sm:w-96 bg-white shadow-xl transform transition-transform duration-300 ease-in-out z-50 ${
         isOpen ? 'translate-x-0' : 'translate-x-full'
       }`}
@@ -107,7 +112,7 @@ export const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
                         </div>
                         <button 
                           className="text-red-500 hover:text-red-700"
-                          onClick={() => removeFromCart(item.id)}
+                          onClick={() => handleRemoveItem(item.id)}
                         >
                           <i className="fas fa-trash"></i>
                         </button>
@@ -126,8 +131,11 @@ export const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
               <span className="text-[#4A3C2A] font-medium">Subtotal</span>
               <span className="text-xl font-bold text-[#4A3C2A]">${cartTotal.toFixed(2)}</span>
             </div>
-            <button className="w-full py-3 bg-[#8C7354] text-white rounded-md hover:bg-[#4A3C2A] transition">
-              Checkout
+            <button 
+              onClick={() => window.location.href = '/pre-order'}
+              className="w-full py-3 bg-[#8C7354] text-white rounded-md hover:bg-[#4A3C2A] transition"
+            >
+              Place Pre-Order
             </button>
           </div>
         )}

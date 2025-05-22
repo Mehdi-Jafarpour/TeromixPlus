@@ -45,12 +45,12 @@ const Header = () => {
         <div className="container mx-auto px-4 py-3 flex flex-col md:flex-row md:items-center justify-between">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center">
-              <span className="text-[#4A3C2A] font-playfair text-2xl md:text-3xl font-bold">Teromix</span>
+              <span className="text-[#73946B] font-playfair text-2xl md:text-3xl font-bold">Teromix</span>
               <span className="text-[#8C7354] font-playfair text-2xl md:text-2xl ml-1">+</span>
             </Link>
             <button 
               id="mobile-menu-button" 
-              className="md:hidden text-[#4A3C2A] focus:outline-none"
+              className="md:hidden text-[#73946B] focus:outline-none"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               <i className={`fas ${mobileMenuOpen ? 'fa-times' : 'fa-bars'} text-2xl`}></i>
@@ -59,22 +59,22 @@ const Header = () => {
 
           <div id="mobile-menu" className={`${mobileMenuOpen ? 'flex' : 'hidden'} md:flex flex-col md:flex-row mt-4 md:mt-0`}>
             <nav className="flex flex-col md:flex-row md:items-center md:ml-6 space-y-3 md:space-y-0">
-              <Link href="/" className="text-[#4A3C2A] font-medium hover:text-[#8C7354] md:mx-4">
+              <Link href="/" className="text-[#73946B] font-medium hover:text-[#8C7354] md:mx-4">
                 {t('navigation.home')}
               </Link>
-              <Link href="/products" className="text-[#4A3C2A] font-medium hover:text-[#8C7354] md:mx-4">
+              <Link href="/products" className="text-[#73946B] font-medium hover:text-[#8C7354] md:mx-4">
                 {t('navigation.products')}
               </Link>
-              <Link href="/services" className="text-[#4A3C2A] font-medium hover:text-[#8C7354] md:mx-4">
+              <Link href="/services" className="text-[#73946B] font-medium hover:text-[#8C7354] md:mx-4">
                 {t('navigation.services')}
               </Link>
-              <Link href="/custom-orders" className="text-[#4A3C2A] font-medium hover:text-[#8C7354] md:mx-4">
+              <Link href="/custom-orders" className="text-[#73946B] font-medium hover:text-[#8C7354] md:mx-4">
                 {t('navigation.custom_orders')}
               </Link>
-              <Link href="/about" className="text-[#4A3C2A] font-medium hover:text-[#8C7354] md:mx-4">
+              <Link href="/about" className="text-[#73946B] font-medium hover:text-[#8C7354] md:mx-4">
                 {t('navigation.about')}
               </Link>
-              <Link href="/contact" className="text-[#4A3C2A] font-medium hover:text-[#8C7354] md:mx-4">
+              <Link href="/contact" className="text-[#73946B] font-medium hover:text-[#8C7354] md:mx-4">
                 {t('navigation.contact')}
               </Link>
             </nav>
@@ -91,12 +91,9 @@ const Header = () => {
                   <i className="fas fa-search"></i>
                 </button>
               </form>
-              <Link href="/account" className="text-[#4A3C2A] hover:text-[#8C7354]">
-                <i className="fas fa-user text-xl"></i>
-              </Link>
               <LanguageSwitcher />
               <button 
-                className="text-[#4A3C2A] hover:text-[#8C7354] relative"
+                className="text-[#73946B] hover:text-[#8C7354] relative"
                 onClick={() => setCartOpen(true)}
               >
                 <i className="fas fa-shopping-cart text-xl"></i>

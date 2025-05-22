@@ -1,5 +1,4 @@
 import { 
-  users, User, InsertUser,
   categories, Category, InsertCategory,
   products, Product, InsertProduct, 
   cartItems, CartItem, InsertCartItem,
@@ -10,13 +9,6 @@ import {
 
 // Interface for storage operations
 export interface IStorage {
-  // User operations
-  getUser(id: number): Promise<User | undefined>;
-  getUserByUsername(username: string): Promise<User | undefined>;
-  getUserByEmail(email: string): Promise<User | undefined>;
-  createUser(user: InsertUser): Promise<User>;
-  updateUser(id: number, user: Partial<InsertUser>): Promise<User | undefined>;
-  
   // Category operations
   getAllCategories(): Promise<Category[]>;
   getCategoryById(id: number): Promise<Category | undefined>;
@@ -34,17 +26,17 @@ export interface IStorage {
   searchProducts(query: string): Promise<Product[]>;
   
   // Cart operations
-  getCartItems(userId: number): Promise<(CartItem & { product: Product })[]>;
+  getCartItems(): Promise<(CartItem & { product: Product })[]>;
   getCartItem(id: number): Promise<CartItem | undefined>;
   addToCart(cartItem: InsertCartItem): Promise<CartItem>;
   updateCartItem(id: number, quantity: number): Promise<CartItem | undefined>;
   removeFromCart(id: number): Promise<boolean>;
-  clearCart(userId: number): Promise<boolean>;
+  clearCart(): Promise<boolean>;
   
   // Order operations
   createOrder(order: InsertOrder): Promise<Order>;
   addOrderItem(orderItem: InsertOrderItem): Promise<OrderItem>;
-  getOrdersByUser(userId: number): Promise<Order[]>;
+  getOrders(): Promise<Order[]>;
   getOrderById(id: number): Promise<(Order & { items: (OrderItem & { product: Product })[] }) | undefined>;
   
   // Testimonial operations
@@ -54,7 +46,6 @@ export interface IStorage {
 }
 
 export class MemStorage implements IStorage {
-  private users: Map<number, User>;
   private categories: Map<number, Category>;
   private products: Map<number, Product>;
   private cartItems: Map<number, CartItem>;
@@ -62,7 +53,6 @@ export class MemStorage implements IStorage {
   private orderItems: Map<number, OrderItem>;
   private testimonials: Map<number, Testimonial>;
   
-  private currentUserId: number;
   private currentCategoryId: number;
   private currentProductId: number;
   private currentCartItemId: number;
@@ -71,7 +61,6 @@ export class MemStorage implements IStorage {
   private currentTestimonialId: number;
 
   constructor() {
-    this.users = new Map();
     this.categories = new Map();
     this.products = new Map();
     this.cartItems = new Map();
@@ -79,7 +68,6 @@ export class MemStorage implements IStorage {
     this.orderItems = new Map();
     this.testimonials = new Map();
     
-    this.currentUserId = 1;
     this.currentCategoryId = 1;
     this.currentProductId = 1;
     this.currentCartItemId = 1;
@@ -89,39 +77,6 @@ export class MemStorage implements IStorage {
     
     // Initialize with sample data
     this.initializeData();
-  }
-
-  // User operations
-  async getUser(id: number): Promise<User | undefined> {
-    return this.users.get(id);
-  }
-
-  async getUserByUsername(username: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(
-      (user) => user.username.toLowerCase() === username.toLowerCase()
-    );
-  }
-
-  async getUserByEmail(email: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(
-      (user) => user.email.toLowerCase() === email.toLowerCase()
-    );
-  }
-
-  async createUser(insertUser: InsertUser): Promise<User> {
-    const id = this.currentUserId++;
-    const user: User = { ...insertUser, id };
-    this.users.set(id, user);
-    return user;
-  }
-
-  async updateUser(id: number, userData: Partial<InsertUser>): Promise<User | undefined> {
-    const user = this.users.get(id);
-    if (!user) return undefined;
-    
-    const updatedUser = { ...user, ...userData };
-    this.users.set(id, updatedUser);
-    return updatedUser;
   }
 
   // Category operations
@@ -204,10 +159,8 @@ export class MemStorage implements IStorage {
   }
 
   // Cart operations
-  async getCartItems(userId: number): Promise<(CartItem & { product: Product })[]> {
-    const items = Array.from(this.cartItems.values()).filter(
-      (item) => item.userId === userId
-    );
+  async getCartItems(): Promise<(CartItem & { product: Product })[]> {
+    const items = Array.from(this.cartItems.values());
     
     return items.map(item => {
       const product = this.products.get(item.productId)!;
@@ -222,7 +175,7 @@ export class MemStorage implements IStorage {
   async addToCart(insertCartItem: InsertCartItem): Promise<CartItem> {
     // Check if the product is already in the cart
     const existingItem = Array.from(this.cartItems.values()).find(
-      (item) => item.userId === insertCartItem.userId && item.productId === insertCartItem.productId
+      (item) => item.productId === insertCartItem.productId
     );
     
     if (existingItem) {
@@ -260,15 +213,8 @@ export class MemStorage implements IStorage {
     return this.cartItems.delete(id);
   }
 
-  async clearCart(userId: number): Promise<boolean> {
-    const userCartItems = Array.from(this.cartItems.values()).filter(
-      (item) => item.userId === userId
-    );
-    
-    for (const item of userCartItems) {
-      this.cartItems.delete(item.id);
-    }
-    
+  async clearCart(): Promise<boolean> {
+    this.cartItems.clear();
     return true;
   }
 
@@ -291,10 +237,8 @@ export class MemStorage implements IStorage {
     return orderItem;
   }
 
-  async getOrdersByUser(userId: number): Promise<Order[]> {
-    return Array.from(this.orders.values()).filter(
-      (order) => order.userId === userId
-    );
+  async getOrders(): Promise<Order[]> {
+    return Array.from(this.orders.values());
   }
 
   async getOrderById(id: number): Promise<(Order & { items: (OrderItem & { product: Product })[] }) | undefined> {

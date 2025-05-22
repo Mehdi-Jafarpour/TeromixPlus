@@ -75,11 +75,11 @@ const Services = () => {
               <div key={service.id} className="lg:pt-12 pt-6 w-full md:w-6/12 lg:w-3/12 px-4 text-center">
                 <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
                   <div className="px-4 py-5 flex-auto">
-                    <div className="text-white p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-5 shadow-lg rounded-full bg-[#8C7354]">
+                    <div className="text-white p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-5 shadow-lg rounded-full bg-[#73946B]">
                       <i className={service.icon}></i>
                     </div>
-                    <h6 className="text-xl font-playfair font-bold text-[#4A3C2A]">{service.title}</h6>
-                    <p className="mt-2 mb-4 text-[#8C7354]">
+                    <h6 className="text-xl font-playfair font-bold text-[#73946B]">{service.title}</h6>
+                    <p className="mt-2 mb-4 text-[#73946B]">
                       {service.description}
                     </p>
                   </div>
@@ -92,17 +92,17 @@ const Services = () => {
           {carpentryServices.map((service, index) => (
             <div key={service.id} id={service.name} className={`flex flex-wrap items-center mt-16 ${index % 2 === 0 ? '' : 'flex-row-reverse'}`}>
               <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
-                <div className="text-[#4A3C2A] p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-[#F9F5E7]">
+                <div className="text-[#73946B] p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-[#F9F5E7]">
                   <i className={service.icon}></i>
                 </div>
-                <h3 className="text-3xl font-playfair font-bold text-[#4A3C2A] mb-2">{service.title}</h3>
-                <p className="text-lg leading-relaxed mt-4 mb-4 text-[#8C7354]">
+                <h3 className="text-3xl font-playfair font-bold text-[#73946B] mb-2">{service.title}</h3>
+                <p className="text-lg leading-relaxed mt-4 mb-4 text-[#73946B]">
                   {service.description}
                 </p>
-                <p className="text-lg leading-relaxed mt-0 mb-4 text-[#8C7354]">
+                <p className="text-lg leading-relaxed mt-0 mb-4 text-[#73946B]">
                   {t(`services.${service.name}.details`)}
                 </p>
-                <a href="/custom-orders" className="font-bold text-[#8C7354] hover:text-[#4A3C2A] mt-8 inline-block transition duration-300">
+                <a href="/custom-orders" className="font-bold text-[#73946B] hover:text-[#4A3C2A] mt-8 inline-block transition duration-300">
                   {t('services.request_quote')} <i className="fas fa-arrow-right ml-1"></i>
                 </a>
               </div>
@@ -115,10 +115,10 @@ const Services = () => {
                     className="w-full align-middle rounded-t-lg"
                   />
                   <blockquote className="relative p-8 mb-4">
-                    <h4 className="text-xl font-bold text-[#4A3C2A]">
+                    <h4 className="text-xl font-bold text-[#73946B]">
                       {t(`services.${service.name}.quote_title`)}
                     </h4>
-                    <p className="text-md font-light mt-2 text-[#8C7354]">
+                    <p className="text-md font-light mt-2 text-[#73946B]">
                       {t(`services.${service.name}.quote`)}
                     </p>
                   </blockquote>
@@ -134,15 +134,15 @@ const Services = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap justify-center text-center mb-24">
             <div className="w-full lg:w-6/12 px-4">
-              <h2 className="text-4xl font-playfair font-bold text-[#4A3C2A]">
+              <h2 className="text-4xl font-playfair font-bold text-[#73946B]">
                 {t('services.cta.title')}
               </h2>
-              <p className="text-lg leading-relaxed mt-4 mb-4 text-[#8C7354]">
+              <p className="text-lg leading-relaxed mt-4 mb-4 text-[#73946B]">
                 {t('services.cta.description')}
               </p>
               <a 
                 href="/contact" 
-                className="mt-6 inline-block px-6 py-3 bg-[#8C7354] hover:bg-[#4A3C2A] text-white font-medium rounded-md transition duration-300 shadow-lg hover:shadow-xl"
+                className="mt-6 inline-block px-6 py-3 bg-[#73946B] hover:bg-[#4A3C2A] text-white font-medium rounded-md transition duration-300 shadow-lg hover:shadow-xl"
               >
                 {t('services.cta.button')}
               </a>

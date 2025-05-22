@@ -83,37 +83,37 @@ const FeaturedProducts = () => {
         {/* Product Filter */}
         <div className="flex flex-wrap gap-3 mb-8">
           <button 
-            className={`px-4 py-2 rounded-full ${activeFilter === 'all' ? 'bg-[#8C7354] text-white' : 'bg-white hover:bg-[#A38F71]/10 text-[#4A3C2A]'} text-sm font-medium transition`}
+            className={`px-4 py-2 rounded-full ${activeFilter === 'all' ? 'bg-[#73946B] text-white' : 'bg-white hover:bg-[#A38F71]/10 text-[#4A3C2A]'} text-sm font-medium transition`}
             onClick={() => filterProducts('all')}
           >
             {t('products.all')}
           </button>
           <button 
-            className={`px-4 py-2 rounded-full ${activeFilter === 'doors' ? 'bg-[#8C7354] text-white' : 'bg-white hover:bg-[#A38F71]/10 text-[#4A3C2A]'} text-sm font-medium transition`}
+            className={`px-4 py-2 rounded-full ${activeFilter === 'doors' ? 'bg-[#73946B] text-white' : 'bg-white hover:bg-[#A38F71]/10 text-[#4A3C2A]'} text-sm font-medium transition`}
             onClick={() => filterProducts('doors')}
           >
             Doors
           </button>
           <button 
-            className={`px-4 py-2 rounded-full ${activeFilter === 'cabinetry' ? 'bg-[#8C7354] text-white' : 'bg-white hover:bg-[#A38F71]/10 text-[#4A3C2A]'} text-sm font-medium transition`}
+            className={`px-4 py-2 rounded-full ${activeFilter === 'cabinetry' ? 'bg-[#73946B] text-white' : 'bg-white hover:bg-[#A38F71]/10 text-[#4A3C2A]'} text-sm font-medium transition`}
             onClick={() => filterProducts('cabinetry')}
           >
             Cabinetry
           </button>
           <button 
-            className={`px-4 py-2 rounded-full ${activeFilter === 'moldings' ? 'bg-[#8C7354] text-white' : 'bg-white hover:bg-[#A38F71]/10 text-[#4A3C2A]'} text-sm font-medium transition`}
+            className={`px-4 py-2 rounded-full ${activeFilter === 'moldings' ? 'bg-[#73946B] text-white' : 'bg-white hover:bg-[#A38F71]/10 text-[#4A3C2A]'} text-sm font-medium transition`}
             onClick={() => filterProducts('moldings')}
           >
             Moldings
           </button>
           <button 
-            className={`px-4 py-2 rounded-full ${activeFilter === 'furniture' ? 'bg-[#8C7354] text-white' : 'bg-white hover:bg-[#A38F71]/10 text-[#4A3C2A]'} text-sm font-medium transition`}
+            className={`px-4 py-2 rounded-full ${activeFilter === 'furniture' ? 'bg-[#73946B] text-white' : 'bg-white hover:bg-[#A38F71]/10 text-[#4A3C2A]'} text-sm font-medium transition`}
             onClick={() => filterProducts('furniture')}
           >
             Furniture
           </button>
           <button 
-            className={`px-4 py-2 rounded-full ${activeFilter === 'decor' ? 'bg-[#8C7354] text-white' : 'bg-white hover:bg-[#A38F71]/10 text-[#4A3C2A]'} text-sm font-medium transition`}
+            className={`px-4 py-2 rounded-full ${activeFilter === 'decor' ? 'bg-[#73946B] text-white' : 'bg-white hover:bg-[#A38F71]/10 text-[#4A3C2A]'} text-sm font-medium transition`}
             onClick={() => filterProducts('decor')}
           >
             Decor

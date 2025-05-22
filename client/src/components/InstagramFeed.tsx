@@ -35,7 +35,7 @@ const InstagramFeed = () => {
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-playfair font-bold text-[#4A3C2A] mb-3">Follow Our Journey</h2>
+          <h2 className="text-3xl font-playfair font-bold text-[#73946B] mb-3">Follow Our Journey</h2>
           <p className="text-[#8C7354] max-w-2xl mx-auto">
             Get inspired by our latest projects and behind-the-scenes craftsmanship
           </p>

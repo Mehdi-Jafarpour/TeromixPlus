@@ -158,7 +158,7 @@ const ProductDetail = () => {
   if (error || !product) {
     return (
       <div className="container mx-auto px-4 py-12 text-center">
-        <h1 className="text-3xl font-playfair font-bold text-[#4A3C2A] mb-4">Product Not Found</h1>
+        <h1 className="text-3xl font-playfair font-bold text-[#73946B] mb-4">Product Not Found</h1>
         <p className="text-[#8C7354] mb-6">
           The product you are looking for is not available or may have been removed.
         </p>
@@ -176,11 +176,11 @@ const ProductDetail = () => {
       <div className="container mx-auto px-4 py-12">
         {/* Breadcrumbs */}
         <div className="mb-8 text-sm">
-          <Link href="/" className="text-[#8C7354] hover:text-[#4A3C2A]">Home</Link>
+          <Link href="/" className="text-[#73946B] hover:text-[#4A3C2A]">Home</Link>
           <span className="mx-2 text-[#8C7354]">/</span>
-          <Link href="/products" className="text-[#8C7354] hover:text-[#4A3C2A]">Products</Link>
+          <Link href="/products" className="text-[#73946B] hover:text-[#4A3C2A]">Products</Link>
           <span className="mx-2 text-[#8C7354]">/</span>
-          <span className="text-[#4A3C2A]">{product.name}</span>
+          <span className="text-[#73946B]">{product.name}</span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -192,7 +192,7 @@ const ProductDetail = () => {
 
           {/* Product Details */}
           <div>
-            <h1 className="text-3xl md:text-4xl font-playfair font-bold text-[#4A3C2A] mb-2">
+            <h1 className="text-3xl md:text-4xl font-playfair font-bold text-[#73946B] mb-2">
               {product.name}
             </h1>
             
@@ -209,7 +209,7 @@ const ProductDetail = () => {
             </div>
 
             <div className="flex items-baseline mb-6">
-              <span className="text-2xl font-bold text-[#4A3C2A] mr-3">
+              <span className="text-2xl font-bold text-[#73946B] mr-3">
                 ${currentPrice.toFixed(2)}
               </span>
               {isInStock ? (
@@ -224,13 +224,13 @@ const ProductDetail = () => {
             </div>
 
             <div className="border-t border-b border-gray-200 py-6 mb-6">
-              <p className="text-[#4A3C2A] leading-relaxed mb-4">
+              <p className="text-[#73946B] leading-relaxed mb-4">
                 {product.description}
               </p>
               
               {dimensions.length > 0 ? (
                 <div className="mt-6">
-                  <h3 className="font-medium text-[#4A3C2A] mb-3">Available Options</h3>
+                  <h3 className="font-medium text-[#73946B] mb-3">Available Options</h3>
                   <div className="space-y-3">
                     {dimensions.map((dim, index) => (
                       <label 
@@ -250,13 +250,13 @@ const ProductDetail = () => {
                         />
                         <div className="flex justify-between items-center">
                           <div>
-                            <p className="font-medium text-[#4A3C2A]">{dim.dimension}</p>
+                            <p className="font-medium text-[#73946B]">{dim.dimension}</p>
                             <p className="text-sm text-[#8C7354] mt-1">
                               Wood Type: {dim.woodType} • Weight: {dim.weight} lbs
                             </p>
                           </div>
                           <div className="text-right">
-                            <p className="font-bold text-[#4A3C2A]">${dim.price.toFixed(2)}</p>
+                            <p className="font-bold text-[#73946B]">${dim.price.toFixed(2)}</p>
                             <p className={`text-sm ${dim.inStock ? 'text-green-600' : 'text-red-600'}`}>
                               {dim.inStock ? 'In Stock' : 'Out of Stock'}
                             </p>
@@ -305,8 +305,8 @@ const ProductDetail = () => {
                 </div>
                 
                 <button 
-                  className="flex-grow py-3 bg-[#8C7354] hover:bg-[#4A3C2A] text-white font-medium rounded-md transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                   onClick={handleAddToCart}
+                  className="w-full py-3 bg-[#73946B] hover:bg-[#4A3C2A] text-white font-medium rounded-md transition duration-300"
                   disabled={!isInStock}
                 >
                   {isInStock ? 'Add to Cart' : 'Out of Stock'}
@@ -316,15 +316,15 @@ const ProductDetail = () => {
 
             <div className="mt-6 text-[#8C7354]">
               <p className="flex items-center mb-2">
-                <i className="fas fa-truck mr-3 text-[#4A3C2A]"></i>
+                <i className="fas fa-truck mr-3 text-[#73946B]"></i>
                 Free shipping on orders over $999
               </p>
               <p className="flex items-center mb-2">
-                <i className="fas fa-sync-alt mr-3 text-[#4A3C2A]"></i>
+                <i className="fas fa-sync-alt mr-3 text-[#73946B]"></i>
                 30-day returns policy
               </p>
               <p className="flex items-center">
-                <i className="fas fa-shield-alt mr-3 text-[#4A3C2A]"></i>
+                <i className="fas fa-shield-alt mr-3 text-[#73946B]"></i>
                 5-year craftsmanship warranty
               </p>
             </div>
@@ -334,7 +334,7 @@ const ProductDetail = () => {
         {/* Product Tabs */}
         <div className="mt-16">
           <div className="bg-white p-8 rounded-lg shadow-md mb-12">
-            <h3 className="font-playfair font-bold text-xl text-[#4A3C2A] mb-4">Product Description</h3>
+            <h3 className="font-playfair font-bold text-xl text-[#73946B] mb-4">Product Description</h3>
             <div className="text-[#8C7354] leading-relaxed space-y-4">
               <p>{product.description}</p>
               <p>
@@ -349,7 +349,7 @@ const ProductDetail = () => {
         {/* Related Products */}
         {filteredRelatedProducts && filteredRelatedProducts.length > 0 && (
           <div className="mt-16">
-            <h2 className="text-2xl font-playfair font-bold text-[#4A3C2A] mb-8">You May Also Like</h2>
+            <h2 className="text-2xl font-playfair font-bold text-[#73946B] mb-8">You May Also Like</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {filteredRelatedProducts.map(relatedProduct => (
                 <ProductCard key={relatedProduct.id} product={relatedProduct} />

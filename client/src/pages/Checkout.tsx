@@ -102,7 +102,7 @@ const Checkout = () => {
       <div className="bg-[#F9F5E7] min-h-screen py-12">
         <div className="container mx-auto px-4 text-center">
           <i className="fas fa-shopping-cart text-5xl text-[#8C7354] mb-4"></i>
-          <h1 className="text-3xl font-playfair font-bold text-[#4A3C2A] mb-4">Your cart is empty</h1>
+          <h1 className="text-3xl font-playfair font-bold text-[#73946B] mb-4">Your cart is empty</h1>
           <p className="text-[#8C7354] mb-8">
             You need to add items to your cart before proceeding to checkout.
           </p>
@@ -119,7 +119,7 @@ const Checkout = () => {
   return (
     <div className="bg-[#F9F5E7] py-12">
       <div className="container mx-auto px-4">
-        <h1 className="text-3xl font-playfair font-bold text-[#4A3C2A] mb-6">Checkout</h1>
+        <h1 className="text-3xl font-playfair font-bold text-[#73946B] mb-6">Checkout</h1>
         
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Checkout Form */}
@@ -128,10 +128,10 @@ const Checkout = () => {
               <form onSubmit={form.handleSubmit(onSubmit)}>
                 {/* Contact Information */}
                 <div className="mb-8">
-                  <h2 className="text-xl font-playfair font-bold text-[#4A3C2A] mb-4">Contact Information</h2>
+                  <h2 className="text-xl font-playfair font-bold text-[#73946B] mb-4">Contact Information</h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="fullName" className="block text-[#4A3C2A] mb-1">Full Name</label>
+                      <label htmlFor="fullName" className="block text-[#73946B] mb-1">Full Name*</label>
                       <input 
                         type="text" 
                         id="fullName"
@@ -143,7 +143,7 @@ const Checkout = () => {
                       )}
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-[#4A3C2A] mb-1">Email Address</label>
+                      <label htmlFor="email" className="block text-[#73946B] mb-1">Email Address*</label>
                       <input 
                         type="email" 
                         id="email"
@@ -155,7 +155,7 @@ const Checkout = () => {
                       )}
                     </div>
                     <div>
-                      <label htmlFor="phone" className="block text-[#4A3C2A] mb-1">Phone Number</label>
+                      <label htmlFor="phone" className="block text-[#73946B] mb-1">Phone Number*</label>
                       <input 
                         type="tel" 
                         id="phone"
@@ -171,10 +171,10 @@ const Checkout = () => {
                 
                 {/* Shipping Information */}
                 <div className="mb-8">
-                  <h2 className="text-xl font-playfair font-bold text-[#4A3C2A] mb-4">Shipping Information</h2>
+                  <h2 className="text-xl font-playfair font-bold text-[#73946B] mb-4">Shipping Information</h2>
                   <div className="grid grid-cols-1 gap-4">
                     <div>
-                      <label htmlFor="address" className="block text-[#4A3C2A] mb-1">Address</label>
+                      <label htmlFor="address" className="block text-[#73946B] mb-1">Street Address*</label>
                       <input 
                         type="text" 
                         id="address"
@@ -187,7 +187,7 @@ const Checkout = () => {
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                       <div>
-                        <label htmlFor="city" className="block text-[#4A3C2A] mb-1">City</label>
+                        <label htmlFor="city" className="block text-[#73946B] mb-1">City*</label>
                         <input 
                           type="text" 
                           id="city"
@@ -199,7 +199,7 @@ const Checkout = () => {
                         )}
                       </div>
                       <div>
-                        <label htmlFor="state" className="block text-[#4A3C2A] mb-1">State</label>
+                        <label htmlFor="state" className="block text-[#73946B] mb-1">State/Province*</label>
                         <input 
                           type="text" 
                           id="state"
@@ -211,10 +211,10 @@ const Checkout = () => {
                         )}
                       </div>
                       <div>
-                        <label htmlFor="zip" className="block text-[#4A3C2A] mb-1">ZIP Code</label>
+                        <label htmlFor="zipCode" className="block text-[#73946B] mb-1">ZIP/Postal Code*</label>
                         <input 
                           type="text" 
-                          id="zip"
+                          id="zipCode"
                           className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#8C7354]"
                           {...form.register("shippingZipCode")}
                         />
@@ -228,7 +228,7 @@ const Checkout = () => {
                 
                 {/* Payment Method */}
                 <div className="mb-8">
-                  <h2 className="text-xl font-playfair font-bold text-[#4A3C2A] mb-4">Payment Method</h2>
+                  <h2 className="text-xl font-playfair font-bold text-[#73946B] mb-4">Payment Method</h2>
                   
                   <div className="space-y-4">
                     <div className="flex items-center">
@@ -239,7 +239,7 @@ const Checkout = () => {
                         className="mr-2"
                         {...form.register("paymentMethod")}
                       />
-                      <label htmlFor="credit" className="text-[#4A3C2A] flex items-center">
+                      <label htmlFor="credit" className="text-[#73946B] flex items-center">
                         <span>Credit Card</span>
                         <div className="ml-4 flex space-x-2">
                           <i className="fab fa-cc-visa text-blue-700 text-xl"></i>
@@ -257,7 +257,7 @@ const Checkout = () => {
                         className="mr-2"
                         {...form.register("paymentMethod")}
                       />
-                      <label htmlFor="paypal" className="text-[#4A3C2A] flex items-center">
+                      <label htmlFor="paypal" className="text-[#73946B] flex items-center">
                         <span>PayPal</span>
                         <i className="fab fa-paypal text-blue-600 ml-4 text-xl"></i>
                       </label>
@@ -269,7 +269,7 @@ const Checkout = () => {
                     <div className="mt-4 p-4 border border-gray-200 rounded-md">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="md:col-span-2">
-                          <label htmlFor="cardNumber" className="block text-[#4A3C2A] mb-1">Card Number</label>
+                          <label htmlFor="cardNumber" className="block text-[#73946B] mb-1">Card Number</label>
                           <input 
                             type="text" 
                             id="cardNumber" 
@@ -279,7 +279,7 @@ const Checkout = () => {
                           />
                         </div>
                         <div>
-                          <label htmlFor="expiry" className="block text-[#4A3C2A] mb-1">Expiry Date</label>
+                          <label htmlFor="expiry" className="block text-[#73946B] mb-1">Expiry Date</label>
                           <input 
                             type="text" 
                             id="expiry" 
@@ -289,7 +289,7 @@ const Checkout = () => {
                           />
                         </div>
                         <div>
-                          <label htmlFor="cvc" className="block text-[#4A3C2A] mb-1">CVC</label>
+                          <label htmlFor="cvc" className="block text-[#73946B] mb-1">CVC</label>
                           <input 
                             type="text" 
                             id="cvc" 
@@ -307,14 +307,14 @@ const Checkout = () => {
                   <Link href="/cart">
                     <button 
                       type="button" 
-                      className="px-6 py-3 bg-white border border-gray-300 text-[#4A3C2A] rounded-md hover:bg-[#F9F5E7] transition"
+                      className="px-6 py-3 bg-white border border-gray-300 text-[#73946B] rounded-md hover:bg-[#F9F5E7] transition"
                     >
                       Back to Cart
                     </button>
                   </Link>
                   <button 
                     type="submit" 
-                    className="px-6 py-3 bg-[#8C7354] hover:bg-[#4A3C2A] text-white font-medium rounded-md transition duration-300 disabled:opacity-70"
+                    className="px-6 py-3 bg-[#73946B] hover:bg-[#8C7354] text-white font-medium rounded-md transition duration-300 disabled:opacity-70"
                     disabled={isProcessing}
                   >
                     {isProcessing ? "Processing..." : "Place Order"}
@@ -327,7 +327,7 @@ const Checkout = () => {
           {/* Order Summary */}
           <div className="lg:col-span-1">
             <div className="bg-white rounded-lg shadow-md p-6 sticky top-24">
-              <h2 className="text-xl font-playfair font-bold text-[#4A3C2A] mb-4">Order Summary</h2>
+              <h2 className="text-xl font-playfair font-bold text-[#73946B] mb-4">Order Summary</h2>
               
               <div className="space-y-4 mb-4">
                 {cart.map((item) => (
@@ -339,11 +339,11 @@ const Checkout = () => {
                         className="w-12 h-12 object-cover rounded"
                       />
                       <div className="ml-3">
-                        <p className="text-[#4A3C2A] font-medium">{item.product.name}</p>
+                        <p className="text-[#73946B] font-medium">{item.product.name}</p>
                         <p className="text-[#8C7354] text-sm">Qty: {item.quantity}</p>
                       </div>
                     </div>
-                    <span className="text-[#4A3C2A] font-medium">
+                    <span className="text-[#73946B] font-medium">
                       ${((item.product.salePrice || item.product.price) * item.quantity).toFixed(2)}
                     </span>
                   </div>
@@ -352,27 +352,27 @@ const Checkout = () => {
               
               <div className="space-y-2 mb-4">
                 <div className="flex justify-between">
-                  <span className="text-[#8C7354]">Subtotal</span>
-                  <span className="text-[#4A3C2A] font-medium">${cartTotal.toFixed(2)}</span>
+                  <div className="text-[#73946B] font-medium">Subtotal</div>
+                  <span className="text-[#73946B] font-medium">${cartTotal.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-[#8C7354]">Shipping</span>
-                  <span className="text-[#4A3C2A]">
+                  <div className="text-[#73946B] font-medium">Shipping</div>
+                  <span className="text-[#73946B]">
                     {cartTotal >= 999 ? "Free" : "$75.00"}
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-[#8C7354]">Tax (8%)</span>
-                  <span className="text-[#4A3C2A]">${(cartTotal * 0.08).toFixed(2)}</span>
+                  <div className="text-[#73946B] font-medium">Tax</div>
+                  <span className="text-[#73946B]">${(cartTotal * 0.08).toFixed(2)}</span>
                 </div>
               </div>
               
               <div className="border-t border-gray-200 pt-4 mb-6">
                 <div className="flex justify-between">
-                  <span className="text-[#4A3C2A] font-bold">Total</span>
-                  <span className="text-[#4A3C2A] font-bold text-xl">
+                  <div className="text-[#73946B] font-bold">Total</div>
+                  <div className="text-[#73946B] font-bold text-xl">
                     ${(cartTotal + (cartTotal >= 999 ? 0 : 75) + (cartTotal * 0.08)).toFixed(2)}
-                  </span>
+                  </div>
                 </div>
               </div>
               

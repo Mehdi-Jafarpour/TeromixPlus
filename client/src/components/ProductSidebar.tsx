@@ -85,7 +85,7 @@ const ProductSidebar = ({
             <h3 className="font-medium text-[#4A3C2A]">Categories</h3>
             <button 
               onClick={() => setExpandedCategories(new Set(categories?.map(c => c.id) || []))}
-              className="text-sm text-[#8C7354] hover:text-[#4A3C2A]"
+              className="text-sm text-[#73946B] hover:text-[#4A3C2A]"
             >
               Expand All
             </button>
@@ -255,7 +255,7 @@ const ProductSidebar = ({
             setSearchTerm("");
             setExpandedCategories(new Set());
           }}
-          className="w-full py-2 bg-[#F9F5E7] text-[#4A3C2A] rounded-md hover:bg-[#A38F71]/10 transition"
+          className="w-full py-2 bg-[#73946B] text-white rounded-md hover:bg-[#4A3C2A] transition"
         >
           Reset All Filters
         </button>

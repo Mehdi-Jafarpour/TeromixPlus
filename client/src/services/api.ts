@@ -29,17 +29,34 @@ interface StrapiCategory {
 
 interface Category {
   id: number;
+  documentId: string;
   name: string;
   slug: string;
-  description: string;
-  productCount: number;
-  subcategories: Array<{
-    id: number;
-    name: string;
-    slug: string;
-    description: string;
-    productCount: number;
+  description: Array<{
+    type: string;
+    children: Array<{
+      type: string;
+      text: string;
+    }>;
   }>;
+  imageUrl: {
+    id: number;
+    url: string;
+    formats?: {
+      thumbnail?: {
+        url: string;
+      };
+      small?: {
+        url: string;
+      };
+      medium?: {
+        url: string;
+      };
+    };
+  };
+  subcategories: Category[];
+  category: Category | null;
+  products: any[];
 }
 
 // Transform Strapi product data to match our frontend structure
@@ -112,11 +129,14 @@ const transformCategory = (item: any): Category => {
   
   const category: Category = {
     id: item.id,
+    documentId: data.documentId || '',
     name: data.name || 'Untitled Category',
     slug: data.slug || `category-${item.id}`,
-    description: data.description || '',
-    productCount: data.products?.count || 0,
-    subcategories: []
+    description: data.description || [],
+    imageUrl: data.imageUrl || { id: 0, url: '' },
+    subcategories: [],
+    category: data.category,
+    products: data.products?.data || []
   };
 
   // Handle subcategories with error checking
@@ -129,10 +149,24 @@ const transformCategory = (item: any): Category => {
       }
       return {
         id: sub.id,
+        documentId: sub.attributes.documentId || '',
         name: sub.attributes.name || 'Untitled Subcategory',
         slug: sub.attributes.slug || `subcategory-${sub.id}`,
-        description: sub.attributes.description || '',
-        productCount: sub.attributes.products?.count || 0
+        description: sub.attributes.description || [],
+        imageUrl: sub.attributes.imageUrl || { id: 0, url: '' },
+        subcategories: sub.attributes.subcategories?.data?.map(subsub => ({
+          id: subsub.id,
+          documentId: subsub.attributes.documentId || '',
+          name: subsub.attributes.name || 'Untitled Subcategory',
+          slug: subsub.attributes.slug || `subcategory-${subsub.id}`,
+          description: subsub.attributes.description || [],
+          imageUrl: subsub.attributes.imageUrl || { id: 0, url: '' },
+          subcategories: [],
+          category: subsub.attributes.category,
+          products: subsub.attributes.products?.data || []
+        })) || [],
+        category: sub.attributes.category,
+        products: sub.attributes.products?.data || []
       };
     }).filter(Boolean); // Remove any null values
   }
@@ -143,27 +177,24 @@ const transformCategory = (item: any): Category => {
 
 export const getCategories = async (): Promise<Category[]> => {
   try {
-    const response = await api.get('/api/categories?populate[subcategories][populate]=*&populate[products][count]=true');
-    console.log('Raw categories response:', JSON.stringify(response.data, null, 2));
+    const response = await api.get('/api/categories?populate=*');
     
     if (!response.data?.data || !Array.isArray(response.data.data)) {
       console.error('Invalid API response structure:', response.data);
       throw new Error('Invalid category data received from API');
     }
     
-    const categories = response.data.data
-      .map(item => {
-        try {
-          return transformCategory(item);
-        } catch (error) {
-          console.warn('Failed to transform category:', item, error);
-          return null;
-        }
-      })
-      .filter(Boolean); // Remove any null values
-    
-    console.log('Transformed categories:', categories);
-    return categories;
+    return response.data.data.map((item: any) => ({
+      id: item.id,
+      documentId: item.documentId,
+      name: item.name,
+      slug: item.slug,
+      description: item.description,
+      imageUrl: item.imageUrl,
+      subcategories: item.subcategories || [],
+      category: item.category,
+      products: item.products || []
+    }));
   } catch (error) {
     console.error('Error fetching categories:', error);
     throw error;

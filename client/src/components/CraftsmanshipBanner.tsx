@@ -15,34 +15,34 @@ const CraftsmanshipBanner = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
-            <span className="inline-block bg-[#F9F5E7] text-[#8C7354] px-4 py-1 rounded-full text-sm font-medium mb-4">
+            <span className="inline-block bg-[#F9F5E7] text-[#73946B] px-4 py-1 rounded-full text-sm font-medium mb-4">
               Our Craftsmanship
             </span>
             <h2 className="text-3xl md:text-4xl font-playfair font-bold text-[#4A3C2A] leading-tight mb-6">
               Dedication to Quality In Every Piece We Create
             </h2>
-            <p className="text-[#8C7354] mb-6 leading-relaxed">
+            <p className="text-[#73946B] mb-6 leading-relaxed">
               At Teromix+, we believe that exceptional wooden elements are the foundation of a beautiful home. Each piece begins with selecting the finest sustainably-sourced hardwoods, which are then carefully transformed by our master craftspeople using both traditional techniques and modern precision.
             </p>
             <ul className="space-y-3 mb-8">
               <li className="flex items-start">
-                <i className="fas fa-check-circle text-[#8C7354] mt-1 mr-3"></i>
+                <i className="fas fa-check-circle text-[#73946B] mt-1 mr-3"></i>
                 <span className="text-[#4A3C2A]">Sustainably sourced premium hardwoods</span>
               </li>
               <li className="flex items-start">
-                <i className="fas fa-check-circle text-[#8C7354] mt-1 mr-3"></i>
+                <i className="fas fa-check-circle text-[#73946B] mt-1 mr-3"></i>
                 <span className="text-[#4A3C2A]">Handcrafted by master woodworkers</span>
               </li>
               <li className="flex items-start">
-                <i className="fas fa-check-circle text-[#8C7354] mt-1 mr-3"></i>
+                <i className="fas fa-check-circle text-[#73946B] mt-1 mr-3"></i>
                 <span className="text-[#4A3C2A]">Meticulous attention to detail in every piece</span>
               </li>
               <li className="flex items-start">
-                <i className="fas fa-check-circle text-[#8C7354] mt-1 mr-3"></i>
+                <i className="fas fa-check-circle text-[#73946B] mt-1 mr-3"></i>
                 <span className="text-[#4A3C2A]">Custom designs to match your vision</span>
               </li>
             </ul>
-            <Link href="/about" className="inline-flex items-center px-6 py-3 bg-[#8C7354] hover:bg-[#4A3C2A] text-white rounded-md font-medium transition duration-300">
+            <Link href="/about" className="inline-flex items-center px-6 py-3 bg-[#73946B] hover:bg-[#4A3C2A] text-white rounded-md font-medium transition duration-300">
               Learn About Our Process <i className="fas fa-arrow-right ml-2"></i>
             </Link>
           </div>
