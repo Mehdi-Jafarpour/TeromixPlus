@@ -20,6 +20,7 @@ export interface Project {
 
 export const getProjects = async (): Promise<Project[]> => {
   try {
+    console.log('Fetching projects from:', STRAPI_URL);
     const response = await api.get('/api/projects', {
       params: {
         populate: '*',
@@ -28,7 +29,15 @@ export const getProjects = async (): Promise<Project[]> => {
     console.log('Projects data:', response.data);
     return response.data.data;
   } catch (error) {
-    console.error('Error fetching projects:', error);
+    if (axios.isAxiosError(error)) {
+      console.error('Error fetching projects:', {
+        message: error.message,
+        response: error.response?.data,
+        status: error.response?.status,
+      });
+    } else {
+      console.error('Error fetching projects:', error);
+    }
     return [];
   }
 }; 

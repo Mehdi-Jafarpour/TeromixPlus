@@ -4,7 +4,7 @@ module.exports = [
     name: 'strapi::cors',
     config: {
       enabled: true,
-      origin: ['https://your-hostinger-domain.com', 'http://localhost:3000'],
+      origin: ['*'],  // Allow all origins during testing
       headers: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
       keepHeaderOnError: true,
@@ -17,4 +17,5 @@ module.exports = [
   'strapi::session',
   'strapi::favicon',
   'strapi::public',
+  'strapi::security',
 ]; 
