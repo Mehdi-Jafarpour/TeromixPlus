@@ -4,10 +4,11 @@ module.exports = [
     name: 'strapi::cors',
     config: {
       enabled: true,
-      origin: ['https://teromixplus.ge', 'http://localhost:3000'],
-      headers: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
+      origin: ['*'],  // Allow all origins during testing
+      headers: ['*'],  // Allow all headers
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
       keepHeaderOnError: true,
+      credentials: true,
     },
   },
   'strapi::poweredBy',
