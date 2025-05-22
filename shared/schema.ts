@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 // Categories
-export const categories = {
+export const categorySchema = z.object({
   id: z.number(),
   name: z.string(),
   slug: z.string(),
@@ -9,13 +9,13 @@ export const categories = {
   imageUrl: z.string().optional(),
   parentId: z.number().optional(),
   createdAt: z.date()
-};
+});
 
-export type Category = z.infer<typeof z.object(categories)>;
+export type Category = z.infer<typeof categorySchema>;
 export type InsertCategory = Omit<Category, "id" | "createdAt">;
 
 // Products
-export const products = {
+export const productSchema = z.object({
   id: z.number(),
   name: z.string(),
   slug: z.string(),
@@ -32,24 +32,24 @@ export const products = {
   rating: z.number(),
   reviewCount: z.number(),
   createdAt: z.date()
-};
+});
 
-export type Product = z.infer<typeof z.object(products)>;
+export type Product = z.infer<typeof productSchema>;
 export type InsertProduct = Omit<Product, "id" | "createdAt">;
 
 // Cart Items
-export const cartItems = {
+export const cartItemSchema = z.object({
   id: z.number(),
   productId: z.number(),
   quantity: z.number(),
   addedAt: z.date()
-};
+});
 
-export type CartItem = z.infer<typeof z.object(cartItems)>;
+export type CartItem = z.infer<typeof cartItemSchema>;
 export type InsertCartItem = Omit<CartItem, "id" | "addedAt">;
 
 // Orders
-export const orders = {
+export const orderSchema = z.object({
   id: z.number(),
   totalAmount: z.number(),
   status: z.enum(["pending", "processing", "shipped", "delivered", "cancelled"]),
@@ -58,25 +58,25 @@ export const orders = {
   shippingState: z.string(),
   shippingZipCode: z.string(),
   createdAt: z.date()
-};
+});
 
-export type Order = z.infer<typeof z.object(orders)>;
+export type Order = z.infer<typeof orderSchema>;
 export type InsertOrder = Omit<Order, "id" | "createdAt">;
 
 // Order Items
-export const orderItems = {
+export const orderItemSchema = z.object({
   id: z.number(),
   orderId: z.number(),
   productId: z.number(),
   quantity: z.number(),
   priceAtPurchase: z.number()
-};
+});
 
-export type OrderItem = z.infer<typeof z.object(orderItems)>;
+export type OrderItem = z.infer<typeof orderItemSchema>;
 export type InsertOrderItem = Omit<OrderItem, "id">;
 
 // Testimonials
-export const testimonials = {
+export const testimonialSchema = z.object({
   id: z.number(),
   name: z.string(),
   email: z.string().email(),
@@ -84,9 +84,9 @@ export const testimonials = {
   comment: z.string(),
   isApproved: z.boolean(),
   createdAt: z.date()
-};
+});
 
-export type Testimonial = z.infer<typeof z.object(testimonials)>;
+export type Testimonial = z.infer<typeof testimonialSchema>;
 export type InsertTestimonial = Omit<Testimonial, "id" | "isApproved" | "createdAt">;
 
 // Zod schemas for validation

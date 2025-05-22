@@ -70,9 +70,14 @@ const Categories = () => {
           Explore our range of beautifully crafted wooden products for every part of your home
         </p>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {lastFiveCategories.map((category) => (
-            <div key={category.id} className="group relative h-80 rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {lastFiveCategories.map((category, index) => (
+            <div 
+              key={category.id} 
+              className={`group relative h-80 rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl ${
+                index === 0 ? 'md:col-span-2 lg:col-span-1' : ''
+              }`}
+            >
               <img 
                 src={getImageUrl(category.imageUrl)} 
                 alt={category.name} 
