@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 const STRAPI_URL = import.meta.env.VITE_STRAPI_URL || 'http://localhost:1337';
 
 const api = axios.create({
@@ -26,6 +25,7 @@ export const getProjects = async (): Promise<Project[]> => {
         populate: '*',
       },
     });
+    console.log('Projects data:', response.data);
     return response.data.data;
   } catch (error) {
     console.error('Error fetching projects:', error);

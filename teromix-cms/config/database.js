@@ -7,7 +7,9 @@ module.exports = ({ env }) => ({
       database: env('DATABASE_NAME', 'teromix'),
       user: env('DATABASE_USERNAME', 'teromix_user'),
       password: env('DATABASE_PASSWORD', ''),
-      ssl: env.bool('DATABASE_SSL', true),
+      ssl: {
+        rejectUnauthorized: false
+      },
     },
   },
 }); 
