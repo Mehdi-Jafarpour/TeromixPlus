@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const STRAPI_URL = 'http://localhost:1337';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
 const api = axios.create({
-  baseURL: STRAPI_URL,
+  baseURL: API_URL,
 });
 
 export interface Project {
@@ -18,17 +18,13 @@ export interface Project {
   };
 }
 
-export const getProjects = async () => {
+export const getProjects = async (): Promise<Project[]> => {
   try {
-    console.log('Fetching projects from:', `${STRAPI_URL}/api/projects`);
-    const response = await api.get('/api/projects', {
-      params: {
-        populate: '*',
-      },
-    });
-    console.log('Full API Response:', response.data);
-    console.log('Projects data structure:', JSON.stringify(response.data.data, null, 2));
-    return response.data.data;
+    const response = await fetch(`${API_URL}/api/projects`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch projects');
+    }
+    return await response.json();
   } catch (error) {
     console.error('Error fetching projects:', error);
     return [];
