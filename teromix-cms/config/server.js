@@ -16,6 +16,6 @@ module.exports = ({ env }) => ({
   },
   cors: {
     enabled: true,
-    origin: ['https://your-hostinger-domain.com', 'http://localhost:3000'],
+    origin: ['https://teromixplus.ge/', 'http://localhost:3000'],
   },
 }); 
