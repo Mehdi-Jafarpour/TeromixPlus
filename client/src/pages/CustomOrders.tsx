@@ -3,6 +3,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import CustomWorkShowcase from '@/components/CustomWorkShowcase';
 
 const customOrderSchema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -177,86 +178,7 @@ const CustomOrders = () => {
       </section>
 
       {/* Custom Work Showcase */}
-      <section id="samples" className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-3xl font-playfair font-bold text-[#4A3C2A] mb-4">
-              Examples of Our Custom Work
-            </h2>
-            <p className="text-[#8C7354]">
-              Browse through some of our recent custom projects to get inspired for your own unique piece.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-[#F9F5E7] rounded-lg overflow-hidden shadow-md">
-              <div className="h-64">
-                <img 
-                  src="https://images.unsplash.com/photo-1615876234886-fd9a39fda97f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=350&q=80" 
-                  alt="Custom built-in bookshelf" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="font-playfair font-bold text-xl text-[#4A3C2A] mb-2">Built-in Library Shelving</h3>
-                <p className="text-[#8C7354] mb-4">
-                  Custom floor-to-ceiling walnut bookshelves with integrated lighting and ladder system.
-                </p>
-                <div className="flex justify-between items-center">
-                  <span className="text-xs bg-white px-3 py-1 rounded-full text-[#8C7354]">Residential</span>
-                  <span className="text-[#4A3C2A] font-medium">Chicago, IL</span>
-                </div>
-              </div>
-            </div>
-            
-            <div className="bg-[#F9F5E7] rounded-lg overflow-hidden shadow-md">
-              <div className="h-64">
-                <img 
-                  src="https://images.unsplash.com/photo-1556910633-5099dc3971e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=350&q=80" 
-                  alt="Custom kitchen cabinetry" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="font-playfair font-bold text-xl text-[#4A3C2A] mb-2">Craftsman Kitchen Renovation</h3>
-                <p className="text-[#8C7354] mb-4">
-                  Quarter-sawn oak cabinetry with custom island and integrated wine storage.
-                </p>
-                <div className="flex justify-between items-center">
-                  <span className="text-xs bg-white px-3 py-1 rounded-full text-[#8C7354]">Residential</span>
-                  <span className="text-[#4A3C2A] font-medium">Portland, OR</span>
-                </div>
-              </div>
-            </div>
-            
-            <div className="bg-[#F9F5E7] rounded-lg overflow-hidden shadow-md">
-              <div className="h-64">
-                <img 
-                  src="https://images.unsplash.com/photo-1617104612739-6453c8f52654?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=350&q=80" 
-                  alt="Custom conference table" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="font-playfair font-bold text-xl text-[#4A3C2A] mb-2">Executive Conference Table</h3>
-                <p className="text-[#8C7354] mb-4">
-                  Sixteen-foot live edge maple conference table with integrated power and data.
-                </p>
-                <div className="flex justify-between items-center">
-                  <span className="text-xs bg-white px-3 py-1 rounded-full text-[#8C7354]">Commercial</span>
-                  <span className="text-[#4A3C2A] font-medium">Seattle, WA</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div className="mt-12 text-center">
-            <button className="px-8 py-3 bg-[#8C7354] hover:bg-[#4A3C2A] text-white font-medium rounded-md transition duration-300">
-              View Portfolio
-            </button>
-          </div>
-        </div>
-      </section>
+      <CustomWorkShowcase />
 
       {/* Custom Order Form */}
       <section id="consultation" className="py-16">
