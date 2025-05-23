@@ -61,7 +61,7 @@ const CustomOrders = () => {
       <div className="relative bg-[#73946B] h-[400px]">
         <div 
           className="absolute inset-0 bg-cover bg-center" 
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1533090161767-e6ffed986c88?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&h=400&q=80')" }}
+          style={{ backgroundImage: "url('https://www.woodbychoice.com/wp-content/uploads/2024/01/events-5-scaled.jpg')" }}
         ></div>
         <div className="container mx-auto px-4 h-full flex flex-col justify-center relative z-10">
           <div className="text-center">
@@ -102,7 +102,7 @@ const CustomOrders = () => {
                   </div>
                   <div className="md:w-1/2 md:pl-12">
                     <img 
-                      src="https://images.unsplash.com/photo-1560185127-6ed189bf02f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=300&q=80" 
+                      src="https://immigracia.ca/wp-content/uploads/2023/07/consultation-1.jpeg" 
                       alt="Designer meeting with client" 
                       className="rounded-lg shadow-md w-full"
                     />
@@ -115,7 +115,7 @@ const CustomOrders = () => {
                 <div className="md:flex items-center">
                   <div className="md:w-1/2 mb-8 md:mb-0 md:pr-12">
                     <img 
-                      src="https://images.unsplash.com/photo-1524234107056-1c1f48f64ab8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=300&q=80" 
+                      src="https://vimalsventure.com/wp-content/uploads/2016/02/11674993_l.jpg" 
                       alt="Design sketches and blueprints" 
                       className="rounded-lg shadow-md w-full"
                     />
@@ -146,7 +146,7 @@ const CustomOrders = () => {
                   </div>
                   <div className="md:w-1/2 md:pl-12">
                     <img 
-                      src="https://images.unsplash.com/photo-1506970845246-18f21d533b20?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=300&q=80" 
+                      src="https://www.mikebrowngroup.com/wp-content/uploads/2022/03/new-construction-homes-idaho.jpg" 
                       alt="Craftsman working on wooden piece" 
                       className="rounded-lg shadow-md w-full"
                     />
@@ -159,7 +159,7 @@ const CustomOrders = () => {
                 <div className="md:flex items-center">
                   <div className="md:w-1/2 mb-8 md:mb-0 md:pr-12">
                     <img 
-                      src="https://demo-source.imgix.net/house.jpg" 
+                      src="https://media.miele.com/media/domestic_nz/media/assets_673_x/service/20000173511_673x379.jpg" 
                       alt="Finished wooden cabinet in home" 
                       className="rounded-lg shadow-md w-full"
                     />

@@ -7,7 +7,7 @@ const About = () => {
       <div className="relative bg-[#4A3C2A] h-[300px] md:h-[400px]">
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-30" 
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1544377193-33dcf4d68fb5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&h=400&q=80')" }}
+          style={{ backgroundImage: "url('https://kellerwoodproducts.com/wp-content/uploads/2022/11/lamination-wood-grade-cylinders-manufacturer.jpeg')" }}
         ></div>
         <div className="container mx-auto px-4 h-full flex flex-col justify-center relative z-10">
           <h1 className="text-4xl md:text-5xl font-playfair font-bold text-white mb-4">About Teromix+</h1>
@@ -38,13 +38,13 @@ const About = () => {
             </div>
             <div className="relative">
               <img 
-                src="https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=800&q=80" 
+                src="https://st2.depositphotos.com/6672578/10090/i/450/depositphotos_100906810-stock-photo-craftsman-cutting-plank-with-circular.jpg" 
                 alt="Craftsman working on wooden furniture" 
                 className="rounded-lg shadow-xl w-full"
               />
               <div className="absolute -bottom-6 -left-6 w-2/3 max-w-[250px]">
                 <img 
-                  src="https://images.unsplash.com/photo-1437034096614-74b8355ffd7f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80" 
+                  src="https://media.istockphoto.com/id/1477996245/photo/closeup-top-view-of-carpenter-man-working-and-curving-wood-in-his-workshop-making-wooden.jpg?s=612x612&w=0&k=20&c=RrHRrfed_BRr7wqmSCezuRw7ffMiHvfE3uvfi5tsgu0=" 
                   alt="Wood workshop with tools" 
                   className="rounded-lg shadow-xl border-4 border-white"
                 />
@@ -117,21 +117,21 @@ const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="aspect-[4/3] overflow-hidden rounded-lg shadow-md">
               <img 
-                src="https://images.unsplash.com/photo-1571942676516-bcab84649e44?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=375&q=80" 
+                src="https://blogcdn.axminstertools.com/wp-content/uploads/2017/11/ultimate-workshop-get-involved.jpg" 
                 alt="Wood workshop with various tools" 
                 className="w-full h-full object-cover"
               />
             </div>
             <div className="aspect-[4/3] overflow-hidden rounded-lg shadow-md">
               <img 
-                src="https://images.unsplash.com/photo-1564498986552-13aeecb8a22c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=375&q=80" 
+                src="https://www.primecabinetry.com/media/igallery/Craftsman_Unfinished_Shaker.jpg" 
                 alt="Craftsman working on wooden cabinets" 
                 className="w-full h-full object-cover"
               />
             </div>
             <div className="aspect-[4/3] overflow-hidden rounded-lg shadow-md">
               <img 
-                src="https://images.unsplash.com/photo-1568313108905-ab9ae7eab9e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=375&q=80" 
+                src="https://wooddesigner.org/wp-content/uploads/2021/05/planed-timber.jpg" 
                 alt="Selection of wood materials" 
                 className="w-full h-full object-cover"
               />

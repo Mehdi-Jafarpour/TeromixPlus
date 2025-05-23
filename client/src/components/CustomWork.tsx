@@ -15,7 +15,7 @@ const CustomWork = () => {
           <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
             <div className="h-48">
               <img 
-                src="https://images.unsplash.com/photo-1560184611-ff3e53f00e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=300&q=80" 
+                src="https://www.1benmu.com/wp-content/uploads/2023/10/Expert-Millwork-Contractors.jpg" 
                 alt="Custom Kitchen Design" 
                 className="w-full h-full object-cover"
               />
@@ -34,7 +34,7 @@ const CustomWork = () => {
           <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
             <div className="h-48">
               <img 
-                src="https://images.unsplash.com/photo-1603073163308-9654c3fb70b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=300&q=80" 
+                src="https://www.1benmu.com/wp-content/uploads/2023/10/Handcrafted-Millwork.jpg" 
                 alt="Custom Blueprint Design" 
                 className="w-full h-full object-cover"
               />
@@ -53,7 +53,7 @@ const CustomWork = () => {
           <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
             <div className="h-48">
               <img 
-                src="https://images.unsplash.com/photo-1584714268709-c3dd9c92b378?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=300&q=80" 
+                src="https://www.elogictech.com/uploads/services/1588051216_millwork-drawing.jpg" 
                 alt="Handmade Woodworking" 
                 className="w-full h-full object-cover"
               />

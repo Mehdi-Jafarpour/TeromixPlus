@@ -111,7 +111,7 @@ export const getProduct = async (slug: string) => {
 };
 
 export const getFeaturedProducts = async () => {
-  const response = await api.get('/api/products?filters[featured][$eq]=true&populate=*');
+  const response = await api.get('/api/products?filters[featured][$eq]=true&sort=createdAt:desc&pagination[limit]=4&populate=*');
   return response.data.data.map(transformProduct);
 };
 

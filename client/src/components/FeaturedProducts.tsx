@@ -4,22 +4,27 @@ import { useQuery } from "@tanstack/react-query";
 import { Product } from "@shared/schema";
 import ProductCard from "./ProductCard";
 import { useTranslation } from "react-i18next";
-import { getFeaturedProducts } from "@/services/api";
+import { getFeaturedProducts, getCategories } from "@/services/api";
 
 const FeaturedProducts = () => {
   const [activeFilter, setActiveFilter] = useState("all");
   const { t } = useTranslation();
   
-  const { data: products, isLoading, error } = useQuery<Product[]>({
+  const { data: products, isLoading: productsLoading, error: productsError } = useQuery<Product[]>({
     queryKey: ['featured-products'],
     queryFn: getFeaturedProducts
+  });
+
+  const { data: categories, isLoading: categoriesLoading } = useQuery({
+    queryKey: ['categories'],
+    queryFn: getCategories
   });
   
   const filterProducts = (category: string) => {
     setActiveFilter(category);
   };
 
-  if (isLoading) {
+  if (productsLoading || categoriesLoading) {
     return (
       <section id="products" className="py-16 bg-[#F9F5E7]">
         <div className="container mx-auto px-4">
@@ -46,7 +51,7 @@ const FeaturedProducts = () => {
     );
   }
 
-  if (error) {
+  if (productsError) {
     return (
       <section id="products" className="py-16 bg-[#F9F5E7]">
         <div className="container mx-auto px-4 text-center">
@@ -88,36 +93,15 @@ const FeaturedProducts = () => {
           >
             {t('products.all')}
           </button>
-          <button 
-            className={`px-4 py-2 rounded-full ${activeFilter === 'doors' ? 'bg-[#73946B] text-white' : 'bg-white hover:bg-[#A38F71]/10 text-[#4A3C2A]'} text-sm font-medium transition`}
-            onClick={() => filterProducts('doors')}
-          >
-            Doors
-          </button>
-          <button 
-            className={`px-4 py-2 rounded-full ${activeFilter === 'cabinetry' ? 'bg-[#73946B] text-white' : 'bg-white hover:bg-[#A38F71]/10 text-[#4A3C2A]'} text-sm font-medium transition`}
-            onClick={() => filterProducts('cabinetry')}
-          >
-            Cabinetry
-          </button>
-          <button 
-            className={`px-4 py-2 rounded-full ${activeFilter === 'moldings' ? 'bg-[#73946B] text-white' : 'bg-white hover:bg-[#A38F71]/10 text-[#4A3C2A]'} text-sm font-medium transition`}
-            onClick={() => filterProducts('moldings')}
-          >
-            Moldings
-          </button>
-          <button 
-            className={`px-4 py-2 rounded-full ${activeFilter === 'furniture' ? 'bg-[#73946B] text-white' : 'bg-white hover:bg-[#A38F71]/10 text-[#4A3C2A]'} text-sm font-medium transition`}
-            onClick={() => filterProducts('furniture')}
-          >
-            Furniture
-          </button>
-          <button 
-            className={`px-4 py-2 rounded-full ${activeFilter === 'decor' ? 'bg-[#73946B] text-white' : 'bg-white hover:bg-[#A38F71]/10 text-[#4A3C2A]'} text-sm font-medium transition`}
-            onClick={() => filterProducts('decor')}
-          >
-            Decor
-          </button>
+          {categories?.map((category) => (
+            <button 
+              key={category.id}
+              className={`px-4 py-2 rounded-full ${activeFilter === category.slug ? 'bg-[#73946B] text-white' : 'bg-white hover:bg-[#A38F71]/10 text-[#4A3C2A]'} text-sm font-medium transition`}
+              onClick={() => filterProducts(category.slug)}
+            >
+              {category.name}
+            </button>
+          ))}
         </div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">

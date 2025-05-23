@@ -10,7 +10,7 @@ const InstagramFeed = () => {
     },
     {
       id: 2,
-      imageUrl: "https://images.unsplash.com/photo-1604406491938-41e1ad7f246c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=500&q=80",
+      imageUrl: "https://www.thespruce.com/thmb/Kjebbt-UNBPaESNaRtdgEY0wFOs=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-172921114-29a2275e18c34ae6b22012be15633083.jpg",
       alt: "Workshop crafting process",
       likes: 98,
       comments: 5

@@ -48,6 +48,10 @@
     },
     "reviewCount": {
       "type": "integer"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

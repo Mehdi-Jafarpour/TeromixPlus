@@ -50,14 +50,14 @@ const CraftsmanshipBanner = () => {
           <div className="relative">
             <div className="aspect-[4/5] rounded-lg overflow-hidden shadow-xl">
               <img 
-                src="https://images.unsplash.com/photo-1617104551722-6988fc70b411?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=750&q=80" 
+                src="https://www.robertogiovannini.com/media/news/intaglio-engraving.jpg" 
                 alt="Craftsman working on wooden millwork" 
                 className="w-full h-full object-cover"
               />
             </div>
             <div className="absolute -bottom-6 -left-6 md:-left-12 w-2/3 rounded-lg overflow-hidden shadow-xl border-4 border-white">
               <img 
-                src="https://images.unsplash.com/photo-1611021061279-92662c6cd73c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80" 
+                src="https://cdn.homedit.com/wp-content/uploads/2020/10/Wood-Cutting-Tools-1024x683.jpeg" 
                 alt="Close up of woodworking detail" 
                 className="w-full h-full object-cover"
               />

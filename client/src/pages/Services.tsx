@@ -10,7 +10,7 @@ const Services = () => {
       title: t('services.painting.title'),
       description: t('services.painting.description'),
       icon: "fas fa-paint-roller",
-      imageUrl: "https://images.unsplash.com/photo-1608613304899-ea8098577e38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      imageUrl: "https://www.familyhandyman.com/wp-content/uploads/2022/03/8-best-polyurethane-stains-ft-e1646690172271.jpg?fit=700%2C700"
     },
     {
       id: 2,
@@ -18,7 +18,7 @@ const Services = () => {
       title: t('services.assembling.title'),
       description: t('services.assembling.description'),
       icon: "fas fa-tools",
-      imageUrl: "https://images.unsplash.com/photo-1581166397057-235af2b3c6dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      imageUrl: "https://refurn.com/wp-content/uploads/2024/02/furniture-stores-that-assemble.jpg"
     },
     {
       id: 3,
@@ -26,7 +26,7 @@ const Services = () => {
       title: t('services.cutting.title'),
       description: t('services.cutting.description'),
       icon: "fas fa-cut",
-      imageUrl: "https://images.unsplash.com/photo-1594712844133-d4193f13c17e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      imageUrl: "https://www.stylecnc.com/uploads/240617/1-24061G60T2X4.jpg"
     },
     {
       id: 4,
@@ -34,7 +34,7 @@ const Services = () => {
       title: t('services.custom.title'),
       description: t('services.custom.description'),
       icon: "fas fa-drafting-compass",
-      imageUrl: "https://images.unsplash.com/photo-1588159509476-12a702517d94?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      imageUrl: "https://sentientfurniture.com/wp-content/uploads/2024/11/Custom-Services-1-640x640.jpg"
     }
   ];
 
@@ -47,7 +47,7 @@ const Services = () => {
           }}>
         <div className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{
-              backgroundImage: "url('https://images.unsplash.com/photo-1556909172-bd5315ff1569?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80')"
+              backgroundImage: "url('https://bns.co.uk/wp-content/uploads/2024/04/Local-Carpentry-Services-Choose-BNS-as-Your-Trusted-Residential-Commercial-Contractor-1.jpg')"
             }}>
           <span id="blackOverlay" className="w-full h-full absolute opacity-50 bg-[#342917]"></span>
         </div>
