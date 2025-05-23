@@ -429,7 +429,6 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     description: Schema.Attribute.Blocks;
     dimensions: Schema.Attribute.Component<'shared.dimension', true>;
-    featured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     imageUrl: Schema.Attribute.Media<'images' | 'files', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
