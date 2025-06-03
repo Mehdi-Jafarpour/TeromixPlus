@@ -1,4 +1,4 @@
-# WoodCraft Millworks E-commerce Website
+# Teromix plus E-commerce Website
 
 A feature-rich e-commerce platform for selling wooden millworks with a warm, wood-themed design.
 
@@ -34,8 +34,8 @@ This project is a full-stack React-based e-commerce application specialized for 
 
 1. Clone the repository
    ```bash
-   git clone https://github.com/YOUR_USERNAME/woodcraft-millworks.git
-   cd woodcraft-millworks
+   git clone https://github.com/Mehdi-Jafarpour/TeromixPlus.git
+   cd teromixplus
    ```
 
 2. Install dependencies
@@ -62,7 +62,3 @@ This project is a full-stack React-based e-commerce application specialized for 
   - `/storage.ts` - Data storage interface
 - `/shared` - Shared code between frontend and backend
   - `/schema.ts` - Data schemas and types
-
-## License
-
-[MIT](LICENSE)
