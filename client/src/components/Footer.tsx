@@ -2,13 +2,12 @@ import { Link } from "wouter";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#73946B] text-[#F9F5E7]">
+    <footer className="bg-[#B6B09F] text-[#F9F5E7]">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
             <Link href="/" className="inline-block mb-4">
-              <span className="text-white font-playfair text-2xl font-bold">Teromix</span>
-              <span className="text-[#A38F71] font-playfair text-xl">+</span>
+             <img src="./src/logo.png" alt="Teromix+" className="h-10 md:h-16" />
             </Link>
             <p className="text-[#F9F5E7]/80 mb-6">Crafting exceptional wooden millwork for distinctive homes since 1985.</p>
             <div className="flex space-x-4">

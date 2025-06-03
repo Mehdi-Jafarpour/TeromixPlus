@@ -45,8 +45,7 @@ const Header = () => {
         <div className="container mx-auto px-4 py-3 flex flex-col md:flex-row md:items-center justify-between">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center">
-              <span className="text-[#73946B] font-playfair text-2xl md:text-3xl font-bold">Teromix</span>
-              <span className="text-[#8C7354] font-playfair text-2xl md:text-2xl ml-1">+</span>
+              <img src="./src/logo.png" alt="Teromix+" className="h-10 md:h-16" />
             </Link>
             <button 
               id="mobile-menu-button" 
