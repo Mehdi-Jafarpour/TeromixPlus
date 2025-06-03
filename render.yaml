@@ -2,7 +2,7 @@ services:
   - type: web
     name: teromix-cms
     env: node
-    buildCommand: cd teromix-cms && npm install && npm run build
+    buildCommand: cd teromix-cms && rm -rf node_modules && npm install --production=false && npm run build
     startCommand: cd teromix-cms && npm start
     envVars:
       - key: NODE_ENV
