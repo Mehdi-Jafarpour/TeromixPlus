@@ -9,16 +9,24 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: '#73946B',
-        secondary: '#8C7354',
-        accent: '#A38F71',
-        background: '#F9F5E7',
-        'primary-foreground': '#FFFFFF',
-        'secondary-foreground': '#FFFFFF',
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        primary: {
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))',
+        },
+        secondary: {
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))',
+        },
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))',
+        },
       },
       fontFamily: {
         playfair: ['Playfair Display', 'serif'],
-        sans: ['Inter', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
       },
       spacing: {
         '128': '32rem',
