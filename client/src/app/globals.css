@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 48 100% 95%;
+    --foreground: 20 14% 4%;
+    --primary: 100 20% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 33 24% 45%;
+    --secondary-foreground: 0 0% 100%;
+    --accent: 33 20% 55%;
+    --accent-foreground: 0 0% 100%;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .container {
+    @apply mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-primary-foreground px-4 py-2 rounded-md hover:bg-opacity-90 transition-all;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground px-4 py-2 rounded-md hover:bg-opacity-90 transition-all;
+  }
+} 
