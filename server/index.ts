@@ -6,6 +6,19 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// Add CORS headers for Vercel deployment
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+  
+  next();
+});
+
 app.use((req, res, next) => {
   const start = Date.now();
   const path = req.path;
@@ -36,7 +49,8 @@ app.use((req, res, next) => {
   next();
 });
 
-(async () => {
+// Setup the express app
+const setupApp = async () => {
   const server = await registerRoutes(app);
 
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
@@ -56,14 +70,25 @@ app.use((req, res, next) => {
     serveStatic(app);
   }
 
-  // ALWAYS serve the app on port 3000
-  // this serves both the API and the client.
-  // It is the only port that is not firewalled.
-  const port = 3000;
-  server.listen({
-    port,
-    host: "localhost",
-  }, () => {
-    log(`serving on port ${port}`);
-  });
-})();
+  return server;
+};
+
+// For local development
+if (process.env.NODE_ENV !== 'production') {
+  (async () => {
+    const server = await setupApp();
+    const port = process.env.PORT || 3000;
+    server.listen({
+      port,
+      host: "localhost",
+    }, () => {
+      log(`serving on port ${port}`);
+    });
+  })();
+}
+
+// For Vercel serverless deployment
+export default async (req: Request, res: Response) => {
+  await setupApp();
+  return app(req, res);
+};

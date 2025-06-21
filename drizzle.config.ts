@@ -1,15 +1,13 @@
 import { defineConfig } from "drizzle-kit";
 
-if (!process.env.DATABASE_URL) {
-  throw new Error("DATABASE_URL, ensure the database is provisioned");
-}
-
-const databaseUrl = process.env.DATABASE_URL || 'sqlite:./dev.db';
+// In production (Vercel), DATABASE_URL will be set
+// In development, we'll use a fallback if it's not set
+const databaseUrl = process.env.DATABASE_URL || 'postgresql://teromix_user:k85ZVCKaZynyleZMczpmH2FrZP0POCCT@dpg-d0vlpegdl3ps73frb3gg-a.oregon-postgres.render.com/teromix_wvds';
 
 export default defineConfig({
   out: "./migrations",
   schema: "./shared/schema.ts",
-  dialect: process.env.DATABASE_URL ? "postgresql" : "sqlite",
+  dialect: "postgresql",
   dbCredentials: {
     url: databaseUrl,
   },
